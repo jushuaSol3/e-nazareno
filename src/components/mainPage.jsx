@@ -18,7 +18,7 @@ function MainPage() {
      <div className="hero-search">
   <span className="hero-search-icon">
     <img 
-      src="/public/search.svg" 
+      src="/search.svg" 
       alt="Search" 
       className="search-img"
     />
