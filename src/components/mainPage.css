@@ -46,6 +46,7 @@
     z-index: 3;
     will-change: transform, opacity;
     animation: imageRise 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
+    transition: top 0.3s ease, height 0.3s ease;
 }
 
 .hero-title {
@@ -61,6 +62,8 @@
     z-index: 1;
     will-change: transform, opacity;
     animation: titleSlam 1.0s cubic-bezier(0.16, 1, 0.3, 1) both;
+    line-height: 2;
+    transform: scaleX(1.2) scaleY(1.5);
 }
 
 .hero-content {
@@ -85,6 +88,7 @@
     max-width: min(30rem, 80%);
     padding-left: clamp(1rem, 6vw, 8rem);
     padding-top: clamp(0.5rem, 2vh, 3rem);
+    transition: margin-top 0.3s ease;
 }
 
 .hero-content p strong {
@@ -165,6 +169,7 @@
     .hero-main-img {
         left: 50%;
         height: clamp(90vh, 200vw, 250vw);
+        transition: none;
     }
     .hero-content p {
         max-width: min(24rem, 75%);
@@ -181,7 +186,7 @@
         left: 20%;
         height: clamp(440vh, 280vw, 240vw);
         top: 50%;
-
+        transition: none;
     }
     .hero-title {
         font-size: clamp(4.5rem, 12vw, 4rem);
@@ -197,15 +202,39 @@
         font-size: clamp(0.6rem, 2.8vw, 0.85rem);
     }
     .hero-search {
+        position: fixed;
         width: min(88vw, 24rem);
         bottom: clamp(5rem, 10vh, 2.5rem);
     }
     .hero-search-input {
-           font-size: clamp(1rem, 1.3vw, 1rem);
+        font-size: clamp(1rem, 1.3vw, 1rem);
+    }
+
+    /* ── Search active: shift content up when keyboard opens ── */
+    .hero.search-active .hero-content p {
+        margin-top: clamp(4rem, 5vh, 6rem);
     }
 }
 
 @media (max-width: 380px) {
-    .hero-content p { max-width: 52%; }
-    .hero-search    { width: 84vw; }
+    .hero {
+        height: 100vh;
+        max-height: 585px;
+    }
+    .hero-main-img {
+        transition: none;
+    }
+    .hero-content p {
+        max-width: 52%;
+        margin-top: clamp(8rem, 6vh, 10rem);
+    }
+    .hero-title {
+        font-size: clamp(0.5rem, 12vw, 4rem);
+    }
+    .hero-search {
+        width: 84vw;
+    }
+    .hero.search-active .hero-content p {
+        margin-top: clamp(3rem, 4vh, 5rem);
+    }
 }
