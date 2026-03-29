@@ -1,3 +1,4 @@
+/* ── Nav List ── */
 ul {
   list-style-type: none;
   margin: 0;
@@ -28,7 +29,14 @@ li a:hover {
   border-radius: 15px;
 }
 
-/* ── Hamburger button (hidden on desktop) ── */
+/* ── Active link ── */
+li a.active {
+  background-color: #c87f1d;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+/* ── Hamburger Button (hidden on desktop) ── */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -54,27 +62,34 @@ li a:hover {
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* Animate bars into X when open */
+/* Bars animate into X when open */
 .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Mobile ── */
+/* ── Mobile (≤ 600px) ── */
 @media (max-width: 600px) {
   .nav-toggle {
     display: flex;
   }
 
   ul {
+    /* Overlay — does not push page content */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 999;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    background-color: var(--primary-color);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
 
     /* Collapsed by default */
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s ease, padding 0.35s ease;
     padding: 0;
+    transition: max-height 0.35s ease, padding 0.35s ease;
   }
 
   ul.open {
@@ -89,9 +104,11 @@ li a:hover {
   li a {
     padding: 0.75rem clamp(1rem, 5vw, 1.5rem);
     width: 100%;
+    border-radius: 0;
   }
 
-  li a:hover {
+  li a:hover,
+  li a.active {
     border-radius: 0;
   }
 }

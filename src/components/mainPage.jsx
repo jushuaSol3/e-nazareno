@@ -6,7 +6,7 @@ function MainPage() {
 
       <h1 className="hero-title">E-NAZARENO</h1>
 
-      <img src="public/hero-banner.png" alt="Main focus" className="hero-main-img" />
+      <img src="/public/hero-banner.png" alt="Main focus" className="hero-main-img" />
 
       <div className="hero-content">
         <p>
@@ -18,14 +18,14 @@ function MainPage() {
      <div className="hero-search">
   <span className="hero-search-icon">
     <img 
-      src="public/search.svg" 
+      src="/public/search.svg" 
       alt="Search" 
       className="search-img"
     />
   </span>
   <input 
     type="text" 
-    placeholder="Hanapin..." 
+    placeholder="Maghanap..." 
     className="hero-search-input" 
   />
 </div>
