@@ -87,7 +87,6 @@
     max-width: min(30rem, 80%);
     padding-left: clamp(1rem, 6vw, 8rem);
     padding-top: clamp(0.5rem, 2vh, 3rem);
-    transition: margin-top 0.3s ease;
 }
 
 .hero-content p strong {
@@ -120,10 +119,8 @@
     color: #540317;
 }
 
+/* ── Hero Search: positioning & shell only (base styles from search-bar.css) ── */
 .hero-search {
-    display: flex;
-    align-items: center;
-    gap: clamp(0.3rem, 0.6vw, 0.5rem);
     position: absolute;
     bottom: clamp(5rem, 5vh, 4rem);
     left: 50%;
@@ -139,28 +136,14 @@
     animation: fadeUpCentered 0.9s ease 1.8s both;
 }
 
-.hero-search-icon {
-    font-size: clamp(0.7rem, 1.1vw, 0.9rem);
-    opacity: 0.8;
-    flex-shrink: 0;
+.hero-search .search-bar-icon {
     color: var(--default-text-color, #fff);
-    line-height: 1;
+    font-size: clamp(0.7rem, 1.1vw, 0.9rem);
 }
 
-.hero-search-input {
-    background: transparent;
-    border: none;
-    outline: none;
-    color: #ffffff;
-    font-family: 'Inknut Antiqua', serif;
+.hero-search .search-bar-input {
     font-size: clamp(0.7rem, 1.3vw, 1rem);
     width: 100%;
-    min-width: 0;
-    caret-color: #ffffff;
-}
-
-.hero-search-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
 }
 
 /* ── Responsive ── */
@@ -178,9 +161,9 @@
 
 @media (max-width: 600px) {
     .hero {
-        height: 100vh;
-        height: 100dvh;
-        max-height: 700px;
+        height: 100lvh;
+        min-height: unset;
+        max-height: unset;
     }
     .hero-main-img {
         left: 50%;
@@ -189,9 +172,9 @@
         transition: none;
     }
     .hero-title {
-    top: 10%;
-    font-size: clamp(1.5rem, 12vw, 4rem);
-}
+        top: 10%;
+        font-size: clamp(1.5rem, 12vw, 4rem);
+    }
     .hero-content p {
         font-size: clamp(1.3rem, 3.5vw, 1.1rem);
         max-width: 40%;
@@ -203,25 +186,15 @@
         font-size: clamp(0.6rem, 2.8vw, 0.85rem);
     }
     .hero-search {
-        position: fixed;
-        width: min(88vw, 24rem);
-        bottom: clamp(5rem, 10vh, 2.5rem);
-    }
-    .hero-search-input {
-        font-size: clamp(1rem, 1.3vw, 1rem);
-    }
-
-    /* ── Search active: shift content up when keyboard opens ── */
-    .hero.search-active .hero-content p {
-        margin-top: clamp(4rem, 5vh, 6rem);
+        display: none;
     }
 }
 
 @media (max-width: 380px) {
     .hero {
-        height: 100vh;
-        height: 100dvh;
-        max-height: 800px;
+        height: 100lvh;
+        min-height: unset;
+        max-height: unset;
     }
     .hero-main-img {
         transition: none;
@@ -231,16 +204,9 @@
     }
     .hero-content p {
         max-width: 52%;
-        margin-top: clamp(14rem, 6vh, 10rem);
+        margin-top: clamp(18rem, 6vh, 10rem);
     }
     .hero-title {
         font-size: clamp(0.5rem, 12vw, 4rem);
-    }
-    .hero-search {
-        width: 84vw;
-        margin-top: 100px;
-    }
-    .hero.search-active .hero-content p {
-        margin-top: clamp(2rem, 4vh, 5rem);
     }
 }
