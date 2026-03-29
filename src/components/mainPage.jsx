@@ -6,7 +6,7 @@ function MainPage() {
 
       <h1 className="hero-title">E-NAZARENO</h1>
 
-      <img src="/public/hero-banner.png" alt="Main focus" className="hero-main-img" />
+      <img src="/hero-banner.png" alt="Main focus" className="hero-main-img" />
 
       <div className="hero-content">
         <p>
