@@ -1,0 +1,28 @@
+# TODO – Frontend Improvements
+
+## Animation Optimization
+
+* [ ] Reduce unnecessary re-renders in animated components
+* [ ] Use `transform` and `opacity` instead of layout-heavy properties
+* [ ] Add `will-change` for smoother animations
+* [ ] Limit animation duration (keep it fast and responsive)
+* [ ] Use `requestAnimationFrame` if handling custom animations
+* [ ] Remove unused animation libraries or effects
+* [ ] Test performance on low-end devices
+
+## Screen Size Responsiveness
+
+* [ ] Add media queries for mobile, tablet, and desktop
+* [ ] Use flexible units (`rem`, `%`, `vh`, `vw`) instead of fixed sizes
+* [ ] Implement responsive layout (Flexbox or Grid)
+* [ ] Ensure images scale properly (`max-width: 100%`)
+* [ ] Test on different screen sizes (Chrome DevTools)
+* [ ] Fix overflow and spacing issues on small screens
+* [ ] Make navigation mobile-friendly (hamburger menu if needed)
+
+## Testing & Final Checks
+
+* [ ] Test animations + responsiveness together
+* [ ] Check for layout shifts during animations
+* [ ] Optimize load time (lazy load assets if needed)
+* [ ] Cross-browser testing (Chrome, Edge, Firefox)
