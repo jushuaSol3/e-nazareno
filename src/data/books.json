@@ -1,0 +1,8 @@
+[
+  { "id": 1, "title": "Harry Potter", "author": "Jushua Solayao", "chapter": 20, "cover": "/sorcerors-stone.jpg", "featured": true },
+  { "id": 2, "title": "Ang Puso ng Nazareno", "author": "Maria Santos", "chapter": 15, "cover": null, "featured": true },
+  { "id": 3, "title": "Debosyon", "author": "Pedro Reyes", "chapter": 8, "cover": null, "featured": false },
+  { "id": 4, "title": "Ang Prusisyon", "author": "Ana Gomez", "chapter": 12, "cover": null, "featured": false },
+  { "id": 5, "title": "Panalangin", "author": "Jose Rizal", "chapter": 5, "cover": null, "featured": false },
+  { "id": 6, "title": "Milagro", "author": "Clara Reyes", "chapter": 9, "cover": null, "featured": false }
+]

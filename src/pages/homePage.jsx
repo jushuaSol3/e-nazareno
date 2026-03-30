@@ -1,7 +1,7 @@
-import SearchBar from './searchBar';
-import './mainPage.css';
+import SearchBar from '../components/searchBar';
+import './homePage.css';
 
-function MainPage() {
+function HomePage() {
   return (
     <div className="hero">
 
@@ -22,4 +22,4 @@ function MainPage() {
   );
 }
 
-export default MainPage;
+export default HomePage;
