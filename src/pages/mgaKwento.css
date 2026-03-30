@@ -118,6 +118,7 @@
   height: 460px;                          /* ↑ was 380px */
   width: 100%;
   --card-offset: clamp(170px, 26vw, 240px); /* ↑ was 130–200px */
+  margin-top: -60px;
 }
 
 .carousel-track {
