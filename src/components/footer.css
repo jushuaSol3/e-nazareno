@@ -1,0 +1,53 @@
+/* ── Footer ── */
+.footer {
+  width: 100%;
+  background: linear-gradient(180deg, #3a0210, #540317);
+  color: #fff;
+  padding: clamp(2rem, 5vh, 3rem) clamp(1rem, 5vw, 4rem);
+  box-sizing: border-box;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.footer-title {
+  font-family: 'Gideon Roman', serif;
+  font-size: clamp(1.2rem, 2vw, 2rem);
+  margin: 0;
+}
+
+.footer-desc {
+  font-size: clamp(0.8rem, 1.2vw, 1rem);
+  opacity: 0.8;
+  max-width: 400px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: clamp(0.75rem, 1vw, 0.95rem);
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.2);
+  padding-top: 1rem;
+  font-size: 0.75rem;
+  opacity: 0.7;
+}

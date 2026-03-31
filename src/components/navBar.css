@@ -1,14 +1,16 @@
-/* ── Desktop Nav wrapper ── */
-.nav-desktop {
+/* ── Wrapper ── */
+.nav-wrapper {
   display: flex;
   align-items: center;
   width: 100%;
   position: relative;
+  gap: 0.5rem;
+  overflow: visible;
 }
 
-/* ── Nav links (desktop) ── */
+/* ── Nav links (desktop: inline row) ── */
 .nav-links {
-  list-style-type: none;
+  list-style: none;
   margin: 0;
   padding: 0;
   display: flex;
@@ -16,6 +18,7 @@
   justify-content: center;
   align-items: center;
   flex: 1;
+  gap: clamp(0px, 0.5vw, 4px);
   transition: opacity 0.3s ease, visibility 0.3s ease;
   opacity: 1;
   visibility: visible;
@@ -31,74 +34,73 @@
   display: block;
   color: var(--navigation-text-color);
   text-decoration: none;
-  padding: clamp(6px, 1vh, 10px) clamp(1.5rem, 3vw, 2.5rem);
+  padding: clamp(5px, 1vh, 10px) clamp(0.75rem, 2vw, 2.5rem);
+  font-size: clamp(0.78rem, 1.2vw, 1rem);
   font-weight: bold;
   white-space: nowrap;
-  transition: background-color 0.3s, color 0.3s, border-radius 0.3s;
-}
-
-.nav-links li a:hover {
-  background-color: #c87f1d;
-  color: #ffffff;
   border-radius: 15px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
+.nav-links li a:hover,
 .nav-links li a.active {
   background-color: #c87f1d;
   color: #ffffff;
-  border-radius: 15px;
 }
 
-/* ── Desktop Search ── */
-.nav-search-desktop {
+/* ── Search wrapper ── */
+.nav-search {
   display: flex;
+  align-items: center;
   width: 2.2rem;
   overflow: hidden;
   flex-shrink: 0;
   position: relative;
   z-index: 20;
-  transition: width 0.4s ease, flex 0.4s ease,
-              padding 0.4s ease, background 0.4s ease,
-              border-color 0.4s ease;
   border: 1px solid transparent;
   border-radius: clamp(8px, 1.5vw, 15px);
   box-sizing: border-box;
-  justify-content: flex-start;
+  transition:
+    width 0.4s ease,
+    flex 0.4s ease,
+    padding 0.4s ease,
+    background 0.4s ease,
+    border-color 0.4s ease;
 }
 
-.nav-search-desktop.expanded {
+.nav-search.expanded {
   flex: 1;
   width: auto;
   min-width: 0;
   padding: clamp(0.4rem, 1vh, 0.7rem) clamp(0.8rem, 2vw, 1rem);
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.30), rgba(255, 255, 255, 0.20));
+  background: linear-gradient(135deg, rgba(0,0,0,0.30), rgba(255,255,255,0.20));
   border-color: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   gap: 0.5rem;
-  justify-content: flex-start;
-  border-radius: clamp(8px, 1.5vw, 15px);
 }
 
-.nav-search-desktop .search-bar-input {
+/* search-bar inside nav-search fills the container */
+.nav-search .search-bar {
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.nav-search .search-bar-input {
   font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   width: 0;
   opacity: 0;
-  transition: width 0.35s ease, opacity 0.25s ease;
   pointer-events: none;
-  background: transparent;
-  border: none;
-  outline: none;
-  color: var(--navigation-text-color);
+  transition: width 0.35s ease, opacity 0.25s ease;
 }
 
-.nav-search-desktop.expanded .search-bar-input {
+.nav-search.expanded .search-bar-input {
   width: 100%;
   opacity: 1;
   pointer-events: auto;
 }
 
-/* ── Hamburger Button ── */
+/* ── Hamburger — always in DOM, hidden via CSS on desktop ── */
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -107,12 +109,13 @@
   gap: 5px;
   width: 2.2rem;
   height: 2.2rem;
+  min-width: 2.2rem;   /* prevent flex from squishing it */
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 0;
-  z-index: 200;
   flex-shrink: 0;
+  z-index: 200;
 }
 
 .nav-toggle span {
@@ -128,122 +131,72 @@
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ── Mobile top row & mobile nav (hidden on desktop) ── */
-.nav-top-row {
-  display: none;
+/* ── Tablet ── */
+@media (max-width: 820px) {
+  .nav-links li a {
+    padding: clamp(5px, 1vh, 8px) clamp(0.5rem, 1.5vw, 1.2rem);
+    font-size: clamp(0.72rem, 1.8vw, 0.9rem);
+  }
 }
 
-.nav-search {
-  display: none;
-}
+/* ── Mobile ── */
+@media (max-width: 640px) {
 
-.nav-links-mobile {
-  display: none;
-}
-
-/* ── Mobile (≤ 600px) ── */
-@media (max-width: 600px) {
-  .nav-desktop {
-    display: none;
+  .nav-wrapper {
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
   }
 
-  .nav-top-row {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-end;
-    gap: 0.75rem;
-  }
-
+  /* show hamburger */
   .nav-toggle {
     display: flex;
+    flex-shrink: 0;
+    margin-left: auto;
   }
 
   .nav-search {
-    display: flex;
-    width: 2.2rem;
-    overflow: hidden;
-    transition: width 0.35s ease, padding 0.35s ease,
-                background 0.35s ease, border-color 0.35s ease;
-    border: 1px solid transparent;
-    border-radius: clamp(8px, 1.5vw, 15px);
-    box-sizing: border-box;
-    justify-content: flex-end;
+    flex-shrink: 0;
+    margin-left: 0;
   }
 
-  .nav-search.expanded {
-    flex: 1;
-    width: auto;
-    padding: clamp(0.4rem, 1vh, 0.7rem) clamp(0.8rem, 2vw, 1rem);
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.30), rgba(255, 255, 255, 0.20));
-    border-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    gap: 0.5rem;
-    justify-content: flex-start;
-  }
-
-  .nav-search .search-bar-input {
-    font-size: clamp(0.75rem, 3vw, 0.9rem);
-    width: 0;
-    opacity: 0;
-    transition: width 0.35s ease, opacity 0.25s ease;
-    pointer-events: none;
-    background: transparent;
-    border: none;
-    outline: none;
-    color: var(--navigation-text-color);
-  }
-
-  .nav-search.expanded .search-bar-input {
-    width: 100%;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .nav-links-mobile {
-    display: flex;
+  /* dropdown */
+  .nav-links {
+    display: none;
     flex-direction: column;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
     z-index: 999;
-    align-items: flex-start;
-    list-style: none;
-    margin: 0;
     background-color: var(--primary-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-    max-height: 0;
     overflow: hidden;
     padding: 0;
+    align-items: flex-start;
+    opacity: 1;
+    visibility: visible;
     transition: max-height 0.35s ease, padding 0.35s ease;
   }
 
-  .nav-links-mobile.open {
-    max-height: 400px;
+  .nav-links.open {
+    display: flex;
     padding: 0.5rem 0;
   }
 
-  .nav-links-mobile li {
+  .nav-links li {
     width: 100%;
   }
 
-  .nav-links-mobile li a {
-    display: block;
-    color: var(--navigation-text-color);
-    text-decoration: none;
+  .nav-links li a {
     padding: 0.75rem clamp(1rem, 5vw, 1.5rem);
-    font-weight: bold;
-    width: 100%;
+    font-size: 0.95rem;
     border-radius: 0;
-    transition: background-color 0.3s, color 0.3s;
+    white-space: normal;
   }
 
-  .nav-links-mobile li a:hover,
-  .nav-links-mobile li a.active {
-    background-color: #c87f1d;
-    color: #ffffff;
+  .nav-links li a:hover,
+  .nav-links li a.active {
     border-radius: 0;
   }
 }

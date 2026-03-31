@@ -16,26 +16,23 @@
     box-sizing: border-box;
 }
 
-html,
-body {
-    max-width: 100%;
-    overflow-x: hidden;
-}
-
 body {
     font-family: 'Montserrat', sans-serif;
+    /* Removed min-width: 1280px — this was preventing mobile layouts */
+    overflow-x: hidden;
 }
-
 header {
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    width: 100%;
-    padding: clamp(0.8rem, 3.5vh, 1.5rem) clamp(0.5rem, 2vw, 1rem);
-    background-color: var(--primary-color, #560116);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  padding: clamp(0.8rem, 3.5vh, 1.5rem) clamp(0.5rem, 2vw, 1rem);
+  background-color: var(--primary-color, #560116);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 main {
     min-height: 100vh;
+}
+html {
+    scroll-snap-type: smooth;
 }
