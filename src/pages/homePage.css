@@ -36,10 +36,10 @@
   color: var(--default-text-color);
   text-align: center;
   line-height: 1.2;
-  padding: clamp(0.75rem, 2vh, 2rem) 0; /* slightly more flexible padding */
+  padding: clamp(0.75rem, 2vh, 2rem) 0; 
   word-break: break-word;
   z-index: 2;
-  margin: 0 auto; /* center if max-width is applied */
+  margin: 0 auto; 
   animation: titleSlam 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
