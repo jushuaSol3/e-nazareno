@@ -8,7 +8,7 @@ function Footer () {
     <div className="footer-left">
       <h3 className="footer-title">E-NAZARENO</h3>
       <p className="footer-desc">
-        Kalipunan ng mga kuwento ng pananampalataya at debosyon.
+       THIS IS A SAMPLE DESCRIPTION.
       </p>
     </div>
 

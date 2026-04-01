@@ -88,12 +88,7 @@ function MgaKwento() {
               <p className="kwento-meta-excerpt">
                 "{book.title} — isang kwento ng pananampalataya ni {book.author}."
               </p>
-            </div>
-          </div>
-
-        </div>
-
-        {/* Dots */}
+                {/* Dots */}
         <div className="kwento-dots">
           {books.map((_, i) => (
             <button
@@ -104,6 +99,12 @@ function MgaKwento() {
             />
           ))}
         </div>
+            </div>
+          </div>
+
+        </div>
+
+    
 
         {/* Counter */}
         <div className="kwento-counter">
