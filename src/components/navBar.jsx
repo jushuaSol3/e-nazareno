@@ -11,12 +11,17 @@ function NavBar() {
 
   const isHome = location.pathname === '/';
 
+  // Close menu and search bar on route change
+  useEffect(() => {
+    setSearchOpen(false);
+    setIsOpen(false);
+  }, [location.pathname]);
+
   // Track viewport width to know which mode we're in
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth <= 640;
       setIsMobile(mobile);
-      // Clean up states when crossing the breakpoint
       if (!mobile) {
         setIsOpen(false);
       } else {
@@ -39,15 +44,22 @@ function NavBar() {
 
   const handleNavLinkClick = () => {
     setIsOpen(false);
+    setSearchOpen(false);
   };
 
-  // Only hide nav-links when search is open on DESKTOP
-  const navLinksHidden = searchOpen && !isMobile;
+  const handleLogoClick = () => {
+    setIsOpen(false);
+    setSearchOpen(false);
+  };
+
+  // Nav links are only hidden when search is actively expanded,
+  // on desktop only, and never on the home page
+  const navLinksHidden = !isHome && searchOpen && !isMobile;
 
   return (
     <div className="nav-wrapper">
 
-      <NavLink to="/" className="nav-logo" aria-label="Home">
+      <NavLink to="/" className="nav-logo" aria-label="Home" onClick={handleLogoClick}>
         <img src="/logo-final.png" alt="Logo" className="nav-logo-img" />
         <h1>E-Nazareno</h1>
       </NavLink>
@@ -69,7 +81,7 @@ function NavBar() {
       <ul className={[
         'nav-links',
         isOpen         ? 'open'   : '',
-        navLinksHidden ? 'hidden' : '',   // ← only on desktop
+        navLinksHidden ? 'hidden' : '',
       ].filter(Boolean).join(' ')}>
         <li><NavLink to="/" onClick={handleNavLinkClick}>Home</NavLink></li>
         <li><NavLink to="/mga-kuwento" onClick={handleNavLinkClick}>Mga Kuwento</NavLink></li>
