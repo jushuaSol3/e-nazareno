@@ -13,7 +13,7 @@
   color: var(--default-text-color);
  /* overflow: hidden;*/
   box-sizing: border-box;
-  isolation: isolate;
+  
 }
 
 .hero-inner {

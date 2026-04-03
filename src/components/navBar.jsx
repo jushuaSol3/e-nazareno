@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import SearchBar from './searchBar';
 import './navBar.css';
@@ -6,9 +6,26 @@ import './navBar.css';
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
   const location = useLocation();
 
   const isHome = location.pathname === '/';
+
+  // Track viewport width to know which mode we're in
+  useEffect(() => {
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 640;
+      setIsMobile(mobile);
+      // Clean up states when crossing the breakpoint
+      if (!mobile) {
+        setIsOpen(false);
+      } else {
+        setSearchOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleSearchToggle = () => {
     setSearchOpen(prev => !prev);
@@ -23,6 +40,9 @@ function NavBar() {
   const handleNavLinkClick = () => {
     setIsOpen(false);
   };
+
+  // Only hide nav-links when search is open on DESKTOP
+  const navLinksHidden = searchOpen && !isMobile;
 
   return (
     <div className="nav-wrapper">
@@ -48,8 +68,8 @@ function NavBar() {
 
       <ul className={[
         'nav-links',
-        isOpen    ? 'open'   : '',
-        searchOpen ? 'hidden' : '',
+        isOpen         ? 'open'   : '',
+        navLinksHidden ? 'hidden' : '',   // ← only on desktop
       ].filter(Boolean).join(' ')}>
         <li><NavLink to="/" onClick={handleNavLinkClick}>Home</NavLink></li>
         <li><NavLink to="/mga-kuwento" onClick={handleNavLinkClick}>Mga Kuwento</NavLink></li>
