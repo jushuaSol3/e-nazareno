@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://e-nazareno-trial.vercel.app/sitemap.xml

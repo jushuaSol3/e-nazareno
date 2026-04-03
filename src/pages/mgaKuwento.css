@@ -89,20 +89,30 @@
   border-radius: 0 14px 14px 0;
 }
 
-.kuwento-card-cover img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 2px solid #c8a96e;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
+/* ── Hero Cover 3D Book Effect ── */
+.kuwento-card-cover img,
 .kuwento-cover-placeholder {
   width: 100%;
   aspect-ratio: 3 / 4;
-  border-radius: 8px;
-  border: 2px solid #c8a96e;
+  border-radius: 6px 2px 2px 6px;
+  border: none;
+  object-fit: cover;
+  display: block;
+  transform: perspective(700px) rotateY(18deg);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+  box-shadow:
+    -6px 6px 0px #b89050,
+    -9px 9px 0px #a07840,
+    -12px 14px 18px rgba(0, 0, 0, 0.45);
+}
+
+.kuwento-card-cover:hover img,
+.kuwento-card-cover:hover .kuwento-cover-placeholder {
+  transform: perspective(700px) rotateY(6deg) translateY(-4px);
+}
+
+.kuwento-cover-placeholder {
   background: #ddd;
   display: flex;
   align-items: center;
@@ -217,37 +227,53 @@
 .kuwento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(clamp(80px, 15vw, 150px), 1fr));
-  gap: clamp(0.75rem, 2vw, 2rem);
+  gap: clamp(1.5rem, 3vw, 3rem);
   width: min(700px, 100%);
   min-width: 0;
 }
 
+/* ── Grid Item — 3D tilt only on the cover, text stays flat ── */
 .kuwento-grid-item {
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: clamp(0.2rem, 0.5vh, 0.4rem);
   cursor: pointer;
   z-index: 2;
   min-width: 0;
-  transition: transform 0.2s ease;
+  transition: transform 0.3s ease;
 }
 
-.kuwento-grid-item:hover { transform: translateY(-4px); }
+.kuwento-grid-item:hover {
+  transform: translateY(-6px);
+}
 
+/* 3D tilt lives on the cover only */
 .kuwento-grid-cover {
   width: 100%;
   aspect-ratio: 3 / 4;
-  border-radius: clamp(4px, 1vw, 8px);
+  border-radius: 6px 2px 2px 6px;
   overflow: hidden;
-  border: 2px solid #c8a96e;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: none;
+  transform: perspective(600px) rotateY(15deg);
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+  box-shadow:
+    -5px 5px 0px #4e4e4d,
+    -8px 8px 0px #51504e,
+    -10px 12px 14px rgba(0, 0, 0, 0.38);
+}
+
+.kuwento-grid-item:hover .kuwento-grid-cover {
+  transform: perspective(600px) rotateY(5deg);
 }
 
 .kuwento-grid-cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .kuwento-grid-placeholder {
@@ -262,15 +288,18 @@
   color: #555;
 }
 
+/* Title and author sit flat, centered, normal weight */
 .kuwento-grid-title {
   font-family: 'Inknut Antiqua', serif;
   font-size: clamp(0.6rem, 1.2vw, 0.85rem);
-  font-weight: 700;
+  font-weight: 400;
   color: #1a1a1a;
-  margin: 0;
+  margin: 0.5rem 0 0;
   line-height: 1.3;
+  text-align: center;
   word-break: break-word;
   overflow-wrap: break-word;
+  transform: none;
 }
 
 .kuwento-grid-author {
@@ -279,4 +308,6 @@
   color: #555;
   margin: 0;
   opacity: 0.75;
+  text-align: center;
+  transform: none;
 }
