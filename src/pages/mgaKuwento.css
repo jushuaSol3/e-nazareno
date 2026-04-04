@@ -20,6 +20,7 @@
            clamp(1rem, 4vw, 3rem)
            clamp(2rem, 4vh, 4rem);
 }
+
 /* ── Card ── */
 .kuwento-card {
   position: relative;
@@ -36,6 +37,7 @@
 }
 
 /* ── Card — Left Text Panel ── */
+/* No transition here — title and button stay static */
 .kuwento-card-text {
   display: flex;
   flex: 1 1 0;
@@ -45,17 +47,17 @@
   min-width: 0;
   padding: clamp(1.5rem, 4vw, 3rem);
   color: #1a1a1a;
-  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .kuwento-card-title {
   margin: 0;
   font-family: 'Lora', serif;
-  font-size: clamp(1.2rem, 4vw, 3.2rem);
+  font-size: clamp(2.5rem, 12vw, 7rem);
   line-height: 1.1;
   word-break: break-word;
 }
 
+/* ── Excerpt — only this fades on slide change ── */
 .kuwento-card-excerpt {
   max-width: 32ch;
   margin: 0;
@@ -65,6 +67,7 @@
   line-height: 1.7;
   word-break: break-word;
   opacity: 0.85;
+  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .kuwento-read-btn {
@@ -100,8 +103,8 @@
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-/* ── Card — Fade Transition State ── */
-.kuwento-card-text.is-transitioning,
+/* ── Fade Transition State — excerpt + cover only ── */
+.kuwento-card-excerpt.is-transitioning,
 .kuwento-card-cover.is-transitioning {
   opacity: 0;
   transform: translateY(10px);
@@ -191,7 +194,7 @@
   border: none;
   background: transparent;
   color: var(--navigation-text-color);
-  font-size: clamp(1.25rem, 3vw, 2.5rem);
+  font-size: clamp(4.25rem, 3vw, 2.5rem);
   line-height: 1;
   cursor: pointer;
   transform: translateY(-50%);
@@ -200,8 +203,8 @@
 
 .kuwento-btn:hover   { opacity: 0.6; }
 .kuwento-btn:active  { transform: translateY(-50%) scale(0.95); }
-.kuwento-btn.left    { left:  clamp(0.25rem, 1vw, 0.75rem); }
-.kuwento-btn.right   { right: clamp(0.25rem, 1vw, 0.75rem); }
+.kuwento-btn.left    { left:  clamp(0.1rem, 1vw, 0.75rem); }
+.kuwento-btn.right   { right: clamp(0.1rem, 1vw, 0.75rem); }
 
 /* ── Dots ── */
 .kuwento-dots {
@@ -361,11 +364,12 @@
   font-weight: 700;
 }
 
+/* ── Grid Title & Author ── */
 .kuwento-grid-title {
   margin: 0.5rem 0 0;
   overflow-wrap: break-word;
   word-break: break-word;
-  color: #ffffff;
+  color: #1a1a1a;
   font-family: 'Montserrat', sans-serif;
   font-size: clamp(0.6rem, 1.2vw, 0.85rem);
   font-weight: 800;

@@ -129,22 +129,21 @@ function MgaKuwento() {
           <button className="kuwento-btn left" onClick={prev} aria-label="Previous">‹</button>
           <button className="kuwento-btn right" onClick={next} aria-label="Next">›</button>
 
-          {/* Static wrapper — title never transitions */}
+          {/* Static panel — title and button never animate */}
           <div className="kuwento-card-text">
             <h1 className="kuwento-card-title">Mga Kuwento</h1>
 
-            {/* Only the dynamic content fades/slides */}
-            <div className={`kuwento-card-dynamic ${tc}`}>
-              <p className="kuwento-card-excerpt">
-                "{book.title} — isang kwento ng pananampalataya ni {book.author}."
-              </p>
-              <button
-                className="kuwento-read-btn"
-                onClick={() => navigate(`/book/${book.id}`)}
-              >
-                Simulan ang pagbasa
-              </button>
-            </div>
+            {/* Only the excerpt fades on slide change */}
+            <p className={`kuwento-card-excerpt ${tc}`}>
+              "{book.title} — isang kwento ng pananampalataya ni {book.author}."
+            </p>
+
+            <button
+              className="kuwento-read-btn"
+              onClick={() => navigate(`/book/${book.id}`)}
+            >
+              Simulan ang pagbasa
+            </button>
           </div>
 
           <div
@@ -164,6 +163,7 @@ function MgaKuwento() {
             ))}
           </div>
 
+          {/* Cover still animates on slide change */}
           <div className={`kuwento-card-cover ${tc}`}>
             {book.cover ? (
               <img src={book.cover} alt={book.title} />

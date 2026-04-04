@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import NavBar from './components/navBar';
 import HomePage from './pages/homePage';
 import MgaKuwento from './pages/mgaKuwento';
@@ -7,6 +7,15 @@ import Footer from './components/footer';
 import BookModal from './components/book-modal';
 import './App.css';
 import TungkolSa from './pages/tungkolSa';
+
+// Resets scroll to top on every route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, [pathname]);
+  return null;
+}
 
 function App() {
   useEffect(() => {
@@ -20,15 +29,15 @@ function App() {
       );
     };
 
-    updateHeaderHeight(); // run on mount
-
-    // re-run if window resizes (header height can change on mobile)
+    updateHeaderHeight();
     window.addEventListener('resize', updateHeaderHeight);
     return () => window.removeEventListener('resize', updateHeaderHeight);
   }, []);
 
   return (
     <>
+      <ScrollToTop />
+
       <header>
         <NavBar />
       </header>

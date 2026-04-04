@@ -1,60 +1,43 @@
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
 import SearchBar from '../components/searchBar';
 import books from '../data/books.json';
-import { useBookModal } from '../components/book-modal-context'; // adjust path as needed
+import { useBookModal } from '../components/book-modal-context';
 import './homePage.css';
 import './featured.css';
 
-function BookCard({ book, featured }) {
-  const { openModal } = useBookModal();
-
-  return (
-    <div
-      className={`book-card ${featured ? 'featured-card' : ''}`}
-      onClick={() => openModal(book)}           // ← was navigate
-    >
-      <div className="book-cover">
-        {book.cover ? (
-          <img
-            src={book.cover}
-            alt={book.title}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-          />
-        ) : (
-          <div className="book-cover-placeholder">
-            <span className="book-cover-initials">{book.title.charAt(0)}</span>
-          </div>
-        )}
-      </div>
-      <div className="book-info">
-        <p className="book-title">{book.title}</p>
-        <p className="book-author">{book.author}</p>
-        <p className="book-chapter">Chapter {book.chapter}</p>
-      </div>
-      {featured && <button className="book-arrow">›</button>}
-    </div>
-  );
+function shuffled(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
 }
 
 function Carousel() {
   const { openModal } = useBookModal();
-  const [active, setActive] = useState(0);
+  const [pool] = useState(() => shuffled(books).slice(0, 3));
+  const [active, setActive] = useState(1);
   const autoPlayRef = useRef(null);
   const resumeTimerRef = useRef(null);
+
+  // Touch tracking
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+  const isSwiping = useRef(false);
 
   const startAutoPlay = useCallback(() => {
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     autoPlayRef.current = setInterval(() => {
-      setActive(i => (i + 1) % books.length);
-    }, 2500);
-  }, []);
+      setActive(i => (i + 1) % pool.length);
+    }, 3000);
+  }, [pool.length]);
 
   const pauseAndResume = useCallback(() => {
     if (autoPlayRef.current) clearInterval(autoPlayRef.current);
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => startAutoPlay(), 10000);
+    resumeTimerRef.current = setTimeout(startAutoPlay, 10000);
   }, [startAutoPlay]);
 
   useEffect(() => {
@@ -65,81 +48,102 @@ function Carousel() {
     };
   }, [startAutoPlay]);
 
-  const prev = () => { pauseAndResume(); setActive(i => (i - 1 + books.length) % books.length); };
-  const next = () => { pauseAndResume(); setActive(i => (i + 1) % books.length); };
-
-  const handleCardClick = (index, isActive) => {
-    if (isActive) {
-      openModal(books[index]);               // ← was navigate
-    } else {
+  const handleCardClick = (index) => {
+    if (index !== active) {
       pauseAndResume();
       setActive(index);
     }
   };
 
-  const getPos = (index) => {
-    let diff = index - active;
-    if (diff > books.length / 2) diff -= books.length;
-    if (diff < -books.length / 2) diff += books.length;
-    return diff;
+  // ── Swipe handlers ──
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+    isSwiping.current = false;
+  };
+
+  const handleTouchMove = (e) => {
+    if (touchStartX.current === null) return;
+    const dx = e.touches[0].clientX - touchStartX.current;
+    const dy = e.touches[0].clientY - touchStartY.current;
+    // Only lock as horizontal swipe if mostly horizontal
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 8) {
+      isSwiping.current = true;
+      e.preventDefault(); // prevent page scroll while swiping
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (!isSwiping.current || touchStartX.current === null) {
+      touchStartX.current = null;
+      return;
+    }
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    const threshold = 40;
+
+    if (dx < -threshold) {
+      // Swipe left → next card
+      pauseAndResume();
+      setActive(i => Math.min(i + 1, pool.length - 1));
+    } else if (dx > threshold) {
+      // Swipe right → prev card
+      pauseAndResume();
+      setActive(i => Math.max(i - 1, 0));
+    }
+
+    touchStartX.current = null;
+    touchStartY.current = null;
+    isSwiping.current = false;
   };
 
   return (
-    <div className="carousel-wrapper">
-      <button className="carousel-btn left" onClick={prev}>‹</button>
-
-      <div className="carousel-track">
-        {books.map((book, index) => {
-          const pos = getPos(index);
-          const abs = Math.abs(pos);
-          const isActive = pos === 0;
-          if (abs > 2) return null;
-
-          return (
-            <div
-              key={book.id}
-              className={`carousel-card ${isActive ? 'active' : ''}`}
-              onClick={() => handleCardClick(index, isActive)}
-              style={{
-                transform: `translateX(calc(${pos} * var(--card-offset))) scale(${isActive ? 1 : 1 - abs * 0.08}) translateY(${abs * 20}px)`,
-                zIndex: 10 - abs,
-                opacity: abs === 2 ? 0.35 : abs === 1 ? 0.65 : 1,
-                filter: isActive ? 'none' : `brightness(${abs === 1 ? 0.6 : 0.4})`,
-              }}
-            >
-              <div className="carousel-cover">
-                {book.cover ? (
-                  <img
-                    src={book.cover}
-                    alt={book.title}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                  />
-                ) : (
-                  <div className="carousel-cover-placeholder">
-                    <span className="carousel-cover-initials">{book.title.charAt(0)}</span>
-                  </div>
-                )}
-              </div>
-              <div className={`carousel-info ${isActive ? 'visible' : ''}`}>
-                <p className="book-title">{book.title}</p>
-                <p className="book-author">{book.author}</p>
-              </div>
+    <div
+      className="exp-carousel"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      {pool.map((book, index) => {
+        const isActive = index === active;
+        return (
+          <div
+            key={book.id}
+            className={`exp-card ${isActive ? 'exp-card--active' : 'exp-card--side'}`}
+            onClick={() => handleCardClick(index)}
+          >
+            <div className="exp-card__cover">
+              {book.cover ? (
+                <img src={book.cover} alt={book.title} />
+              ) : (
+                <div className="exp-card__placeholder">
+                  {book.title.charAt(0)}
+                </div>
+              )}
             </div>
-          );
-        })}
-      </div>
 
-      <button className="carousel-btn right" onClick={next}>›</button>
+            <div className={`exp-card__overlay ${isActive ? 'exp-card__overlay--visible' : ''}`}>
+              <p className="exp-card__title">{book.title}</p>
+              <p className="exp-card__author">{book.author}</p>
+              <button
+                className="exp-card__read"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  openModal(book);
+                }}
+              >
+                ➔ Basahin
+              </button>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
 
 function HomePage() {
-  const featured = books.filter(b => b.featured);
-
   return (
     <>
-      {/* ── Hero ── */}
       <section className="hero">
         <div className="hero-inner">
           <h1 className="hero-title">E-NAZARENO</h1>
@@ -156,21 +160,10 @@ function HomePage() {
         </div>
       </section>
 
-      {/* ── Stories Content ── */}
       <div className="stories-page">
-        <section className="section-featured" id="featured">
-          <h2 className="section-title">Featured</h2>
-          <div className="featured-list">
-            {featured.map(book => (
-              <BookCard key={book.id} book={book} featured={true} />
-            ))}
-          </div>
-        </section>
-
         <section className="section-all">
           <div className="section-header">
-            <h2 className="section-title">All Books</h2>
-            {/* <a href="#" className="view-all">View all →</a> */}
+            <h2 className="section-title">FEATURED</h2>
             <NavLink to="/mga-kuwento" className="view-all">View all →</NavLink>
           </div>
           <Carousel />

@@ -138,7 +138,6 @@
   width: 100%;
   max-width: 680px;
   display: block;
-  margin: 0 auto;
   border-radius: 6px;
 }
 
@@ -202,24 +201,3 @@
   filter: none;
 }
 
-/* ── Responsive tweaks ── */
-@media (max-width: 480px) {
-  .tungkolSa-intro {
-    padding: var(--space-md) var(--space-xs);
-  }
-
-  .tungkolSa-intro-body {
-    text-align: left;   /* avoid orphaned words on narrow phones */
-    hyphens: auto;
-  }
-
-  .tungkolSa-simbahan-img {
-    border-radius: 4px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .tungkolSa-intro {
-    max-width: 760px;
-  }
-}
