@@ -1,8 +1,50 @@
 [
-  { "id": 1, "title": "Harry Potter", "author": "Jushua Solayao", "chapter": 20, "cover": "/sorcerors-stone.jpg", "featured": true },
-  { "id": 2, "title": "Ang Puso ng Nazareno", "author": "Maria Santos", "chapter": 15, "cover": null, "featured": true },
-  { "id": 3, "title": "Debosyon", "author": "Pedro Reyes", "chapter": 8, "cover": null, "featured": false },
-  { "id": 4, "title": "Ang Prusisyon", "author": "Ana Gomez", "chapter": 12, "cover": null, "featured": false },
-  { "id": 5, "title": "Panalangin", "author": "Jose Rizal", "chapter": 5, "cover": null, "featured": false },
-  { "id": 6, "title": "Milagro", "author": "Clara Reyes", "chapter": 10, "cover": null, "featured": false }
+  {
+    "id": 1,
+    "preface": "Historikal",
+    "title": "Ang Manlalakbay Sa Pilapil",
+    "author": "Stephanie Marca",
+    "cover": "/sorcerors-stone.jpg",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "preface": "Espiritwal",
+    "title": "Sa Pagitan Ng Bakod At Balikat",
+    "author": "Stephanie Marca",
+    "cover": null,
+    "featured": true
+  },
+  {
+    "id": 3,
+    "preface": "Kultural",
+    "title": "Ang Mahinahong Lagaslas ng Agos",
+    "author": "Stephanie Marca",
+    "cover": null,
+    "featured": false
+  },
+  {
+    "id": 4,
+    "preface": "Hiling",
+    "title": "Sa Liwanag ng Panata",
+    "author": "Joey Kate Cortez",
+    "cover": null,
+    "featured": false
+  },
+  {
+    "id": 5,
+    "preface": "Pasasalamat",
+    "title": "Ang Bulway Ng Pasasalamat",
+    "author": "Joey Kate Cortez",
+    "cover": null,
+    "featured": false
+  },
+  {
+    "id": 6,
+    "preface": "Paniniwala",
+    "title": "Higit Sa Bato't Semento",
+    "author": "Joey Kate Cortez",
+    "cover": null,
+    "featured": false
+  }
 ]

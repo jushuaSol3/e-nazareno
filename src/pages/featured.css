@@ -90,7 +90,7 @@
     font-size: clamp(0.75rem, 1.4vw, 1rem);
     font-weight: 600;
     color: #000;
-    white-space: nowrap;
+    white-space: wrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -216,8 +216,13 @@
     touch-action: manipulation;
 }
 
-.carousel-btn.left  { left: 0; }
-.carousel-btn.right { right: 0; }
+.carousel-btn.left {
+    left: 0;
+}
+
+.carousel-btn.right {
+    right: 0;
+}
 
 /* ── Scroll animations ── */
 
@@ -234,11 +239,25 @@
 }
 
 /* stagger delay for grid cards */
-.scroll-hidden:nth-child(2) { transition-delay: 0.08s; }
-.scroll-hidden:nth-child(3) { transition-delay: 0.16s; }
-.scroll-hidden:nth-child(4) { transition-delay: 0.24s; }
-.scroll-hidden:nth-child(5) { transition-delay: 0.32s; }
-.scroll-hidden:nth-child(6) { transition-delay: 0.40s; }
+.scroll-hidden:nth-child(2) {
+    transition-delay: 0.08s;
+}
+
+.scroll-hidden:nth-child(3) {
+    transition-delay: 0.16s;
+}
+
+.scroll-hidden:nth-child(4) {
+    transition-delay: 0.24s;
+}
+
+.scroll-hidden:nth-child(5) {
+    transition-delay: 0.32s;
+}
+
+.scroll-hidden:nth-child(6) {
+    transition-delay: 0.40s;
+}
 
 /* respect reduced motion */
 @media (prefers-reduced-motion: reduce) {

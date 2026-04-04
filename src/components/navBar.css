@@ -59,7 +59,8 @@
 
 .nav-links.hidden {
   opacity: 0;
-  visibility: hidden;
+  visibility: visible;
+  /*nahanap na ni juswa*/
   pointer-events: none;
 }
 
@@ -73,9 +74,9 @@
   white-space: nowrap;
   border-radius: 15px;
   transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-links li a:hover,
@@ -96,6 +97,7 @@
   align-items: center;
   width: 2.2rem;
   overflow: hidden;
+
   flex-shrink: 0;
   z-index: 100;
   border: 1px solid transparent;
@@ -170,9 +172,17 @@
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-toggle.open span:nth-child(2) { opacity: 0; }
-.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
 
 /* ── Mobile (≤ 640px) ── */
 @media (max-width: 640px) {
@@ -251,7 +261,9 @@
     padding: 0.5rem 0;
   }
 
-  .nav-links li { width: 100%; }
+  .nav-links li {
+    width: 100%;
+  }
 
   .nav-links li a {
     padding: 0.75rem clamp(1rem, 5vw, 1.5rem);

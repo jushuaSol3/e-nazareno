@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { NavLink } from 'react-router-dom';
 import SearchBar from '../components/searchBar';
 import books from '../data/books.json';
 import { useBookModal } from '../components/book-modal-context'; // adjust path as needed
@@ -78,7 +79,7 @@ function Carousel() {
 
   const getPos = (index) => {
     let diff = index - active;
-    if (diff >  books.length / 2) diff -= books.length;
+    if (diff > books.length / 2) diff -= books.length;
     if (diff < -books.length / 2) diff += books.length;
     return diff;
   };
@@ -169,7 +170,8 @@ function HomePage() {
         <section className="section-all">
           <div className="section-header">
             <h2 className="section-title">All Books</h2>
-            <a href="#" className="view-all">View all →</a>
+            {/* <a href="#" className="view-all">View all →</a> */}
+            <NavLink to="/mga-kuwento" className="view-all">View all →</NavLink>
           </div>
           <Carousel />
         </section>
