@@ -131,7 +131,7 @@ function Carousel() {
                   openModal(book);
                 }}
               >
-                ➔ Basahin
+                Basahin
               </button>
             </div>
           </div>
@@ -163,8 +163,8 @@ function HomePage() {
       <div className="stories-page">
         <section className="section-all">
           <div className="section-header">
-            <h2 className="section-title">FEATURED</h2>
-            <NavLink to="/mga-kuwento" className="view-all">View all →</NavLink>
+            <h2 className="section-title">ITINATAMPOK</h2>
+            <NavLink to="/mga-kuwento" className="view-all">Tingnan lahat →</NavLink>
           </div>
           <Carousel />
         </section>
