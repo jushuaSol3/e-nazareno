@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Data from '../data/books.json';
 import './searchBar.css';
 
@@ -7,6 +8,10 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
   const searchClose = useRef(null);
   const [isOpen, setOpen] = useState(false);
   const [sortAscending, setSortAscending] = useState(true);
+
+
+  const navigate = useNavigate();
+
 
   const filteredSearch = Data.filter((book) =>
     book.title.toLowerCase().includes(search.toLowerCase())
@@ -23,7 +28,7 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
     function mouseClickedOutside(event) {
       if (searchClose.current && !searchClose.current.contains(event.target)) {
         setOpen(false);
-        setSearch(''); 
+        setSearch('');
       }
     }
     document.addEventListener('mousedown', mouseClickedOutside);
@@ -40,9 +45,8 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
     <>
       <div className="wrapper" ref={searchClose}>
         <div
-          className={`search-bar ${className || ''} ${
-            expandable && expanded ? 'expanded' : ''
-          }`}
+          className={`search-bar ${className || ''} ${expandable && expanded ? 'expanded' : ''
+            }`}
         >
           {expandable ? (
             <button
@@ -93,7 +97,11 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
                 <div
                   className="list-item"
                   key={key}
-                  onClick={() => alert(`you clicked, ${val.title}`)}
+                  onClick={() => {
+                    navigate(`/book/${val.id}`);
+                    setOpen(false);
+                    setSearch('');
+                  }}
                 >
                   {val.title}
                 </div>

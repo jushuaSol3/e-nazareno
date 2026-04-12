@@ -2,41 +2,41 @@ import { useEffect, useRef, useState } from 'react';
 import './tungkolSa.css';
 
 const KATEGORYA_CARDS = [
-  { id: 1, src: '/kategorya1.jpg', label: 'Kasaysayan',    side: 'left'  },
-  { id: 2, src: '/kategorya2.jpg', label: 'Prusisyon',     side: 'right' },
-  { id: 3, src: '/kategorya3.jpg', label: 'Mga Deboto',    side: 'left'  },
-  { id: 4, src: '/kategorya4.jpg', label: 'Tradisyon',     side: 'right' },
-  { id: 5, src: '/kategorya5.jpg', label: 'Panalangin',    side: 'left'  },
-  { id: 6, src: '/kategorya6.jpg', label: 'Pagmamahal',    side: 'right' },
+  { id: 1, src: '/kategorya1.jpg', label: 'Kasaysayan', side: 'left', },
+  { id: 2, src: '/kategorya2.jpg', label: 'Prusisyon', side: 'right' },
+  { id: 3, src: '/kategorya3.jpg', label: 'Mga Deboto', side: 'left' },
+  { id: 4, src: '/kategorya4.jpg', label: 'Tradisyon', side: 'right' },
+  { id: 5, src: '/kategorya5.jpg', label: 'Panalangin', side: 'left' },
+  { id: 6, src: '/kategorya6.jpg', label: 'Pagmamahal', side: 'right' },
 ];
 
 const LAYUNIN_CARDS = [
-  { src: '/layunin1.jpg', alt: 'Bawat pagluhod',   label: 'Bawat pagluhod',   hasImage: true  },
-  { src: '',              alt: '',                  label: 'Bawat hiling',      hasImage: false },
-  { src: '',              alt: '',                  label: 'Bawat pasasalamat', hasImage: false },
+  { src: '/layunin1.jpg', alt: 'Bawat pagluhod', label: 'Bawat pagluhod', hasImage: true },
+  { src: '', alt: '', label: 'Bawat hiling', hasImage: false },
+  { src: '', alt: '', label: 'Bawat pasasalamat', hasImage: false },
 ];
 
 const OBSERVER_OPTS = { threshold: 0.1, rootMargin: '0px 0px -20px 0px' };
 
 // Total bands: 6 cards + 2 buffer = 8 viewports
 const TOTAL_BANDS = 6;
-const CARD_COUNT  = KATEGORYA_CARDS.length;
+const CARD_COUNT = KATEGORYA_CARDS.length;
 
 function KategoryaStack() {
-  const trackRef  = useRef(null);
+  const trackRef = useRef(null);
   const stickyRef = useRef(null);
   const [cards, setCards] = useState(KATEGORYA_CARDS.map(() => ({ progress: 0 })));
 
   useEffect(() => {
-    const track  = trackRef.current;
+    const track = trackRef.current;
     const sticky = stickyRef.current;
     if (!track || !sticky) return;
 
     const onScroll = () => {
-      const rect    = track.getBoundingClientRect();
-      const vh      = window.innerHeight;
+      const rect = track.getBoundingClientRect();
+      const vh = window.innerHeight;
       const scrolled = Math.max(0, -rect.top);
-      const bandH   = vh; // one full viewport per card
+      const bandH = vh; // one full viewport per card
 
       // ── Card progress ──
       setCards(KATEGORYA_CARDS.map((_, i) => {
@@ -47,11 +47,11 @@ function KategoryaStack() {
       // ── BG zoom ──
       // overall progress through the entire track: 0 → 1
       const totalScroll = TOTAL_BANDS * vh;
-      const overallP    = Math.max(0, Math.min(1, scrolled / totalScroll));
+      const overallP = Math.max(0, Math.min(1, scrolled / totalScroll));
 
       // Zoom curve: 1 at entry, peaks at 1.15 at mid-scroll, back to 1 at exit
       const zoomAmount = 0.15; // max extra scale
-      const bgScale    = 1 + zoomAmount * Math.sin(Math.PI * overallP);
+      const bgScale = 1 + zoomAmount * Math.sin(Math.PI * overallP);
 
       sticky.style.setProperty('--kat-bg-scale', bgScale.toFixed(4));
     };
@@ -66,7 +66,7 @@ function KategoryaStack() {
       <div ref={stickyRef} className="kat-sticky">
         <div className="kat-scene">
           {KATEGORYA_CARDS.map((card, i) => {
-            const p      = cards[i].progress;
+            const p = cards[i].progress;
             const xStart = card.side === 'left' ? -85 : 85;
 
             return (
@@ -76,7 +76,7 @@ function KategoryaStack() {
                 style={{
                   transform: `translateX(${xStart * (1 - p)}%) scale(${0.35 + p * 0.65})`,
                   opacity: Math.min(1, p * 2),
-                  zIndex:  Math.round(p * 10) + i,
+                  zIndex: Math.round(p * 10) + i,
                 }}
               >
                 <img src={card.src} alt={card.label} className="kat-card-img" loading="lazy" />
@@ -100,16 +100,16 @@ function KategoryaStack() {
 
 export default function TungkolSa() {
   const refs = {
-    title:     useRef(null),
-    sub:       useRef(null),
-    body:      useRef(null),
-    about:     useRef(null),
-    layunin:   useRef(null),
+    title: useRef(null),
+    sub: useRef(null),
+    body: useRef(null),
+    about: useRef(null),
+    layunin: useRef(null),
     kategorya: useRef(null),
   };
 
   useEffect(() => {
-    const targets  = Object.values(refs).map(r => r.current).filter(Boolean);
+    const targets = Object.values(refs).map(r => r.current).filter(Boolean);
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
@@ -128,7 +128,7 @@ export default function TungkolSa() {
 
       <section className="tungkolSa-banner" aria-label="Banner">
         <figure className="tungkolSa-banner-img-wrap">
-          <img src="/banner2.jpg" alt="Banner ng E-Nazareno" />
+          <img src="/nazareno_kasaysayan.png" alt="Banner ng E-Nazareno" />
           <figcaption className="tungkolSa-banner-overlay">
             <h1>Tungkol sa amin</h1>
           </figcaption>
