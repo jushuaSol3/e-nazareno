@@ -1,14 +1,14 @@
 :root {
-  --space-xs:  clamp(0.75rem, 2vw,   1rem);
-  --space-sm:  clamp(1rem,    3vw,   1.5rem);
-  --space-md:  clamp(1.25rem, 4vw,   2rem);
-  --space-lg:  clamp(2rem,    5vw,   3rem);
-  --space-xl:  clamp(3rem,    7vh,   5rem);
+  --space-xs: clamp(0.75rem, 2vw, 1rem);
+  --space-sm: clamp(1rem, 3vw, 1.5rem);
+  --space-md: clamp(1.25rem, 4vw, 2rem);
+  --space-lg: clamp(2rem, 5vw, 3rem);
+  --space-xl: clamp(3rem, 7vh, 5rem);
 
-  --text-sm:   clamp(0.82rem, 1.8vw, 0.97rem);
-  --text-md:   clamp(0.85rem, 2vw,   1.05rem);
-  --text-lg:   clamp(1.2rem,  3vw,   1.8rem);
-  --text-hero: clamp(2rem,    5vw,   4rem);
+  --text-sm: clamp(0.82rem, 1.8vw, 0.97rem);
+  --text-md: clamp(0.85rem, 2vw, 1.05rem);
+  --text-lg: clamp(1.2rem, 3vw, 1.8rem);
+  --text-hero: clamp(2rem, 5vw, 4rem);
 }
 
 .tungkolSa-page {
@@ -62,15 +62,59 @@
 }
 
 @keyframes fontLoop {
-  0%,  11% { font-family: 'Montserrat',        sans-serif; letter-spacing: 0.04em; }
-  12%, 23% { font-family: 'Gideon Roman',       serif;      letter-spacing: 0.08em; }
-  24%, 35% { font-family: 'Inknut Antiqua',     serif;      letter-spacing: 0.04em; }
-  36%, 47% { font-family: 'Lora',               serif;      letter-spacing: 0.06em; }
-  48%, 59% { font-family: 'Playfair Display',   serif;      letter-spacing: 0.05em; }
-  60%, 71% { font-family: 'Cinzel',             serif;      letter-spacing: 0.10em; }
-  72%, 83% { font-family: 'IM Fell English',    serif;      letter-spacing: 0.03em; }
-  84%, 99% { font-family: 'Cormorant Garamond', serif;      letter-spacing: 0.07em; }
-  100%     { font-family: 'Montserrat',         sans-serif; letter-spacing: 0.04em; }
+
+  0%,
+  11% {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.04em;
+  }
+
+  12%,
+  23% {
+    font-family: 'Gideon Roman', serif;
+    letter-spacing: 0.08em;
+  }
+
+  24%,
+  35% {
+    font-family: 'Inknut Antiqua', serif;
+    letter-spacing: 0.04em;
+  }
+
+  36%,
+  47% {
+    font-family: 'Lora', serif;
+    letter-spacing: 0.06em;
+  }
+
+  48%,
+  59% {
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 0.05em;
+  }
+
+  60%,
+  71% {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.10em;
+  }
+
+  72%,
+  83% {
+    font-family: 'IM Fell English', serif;
+    letter-spacing: 0.03em;
+  }
+
+  84%,
+  99% {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.07em;
+  }
+
+  100% {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.04em;
+  }
 }
 
 .tungkolSa-banner-overlay h1 {
@@ -84,7 +128,7 @@
   text-align: center;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
   cursor: default;
-  animation: fontLoop 5s steps(1) infinite;
+  /* animation: fontLoop 5s steps(1) infinite; */
 }
 
 /* ── Intro ── */
@@ -386,14 +430,14 @@
 .tungkolSa-intro-title {
   transform: translateY(28px);
   transition:
-    opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .tungkolSa-intro-sub {
   transform: translateY(22px);
   transition:
-    opacity   0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
     transform 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.12s;
 }
 
@@ -401,25 +445,25 @@
   transform: scale(0.96) translateY(24px);
   filter: blur(4px) brightness(0.85);
   transition:
-    opacity   0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s,
+    opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s,
     transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s,
-    filter    0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
+    filter 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.24s;
 }
 
 .tungkolSa-about-wrap {
   transform: translateY(32px);
   filter: drop-shadow(0 0 0px rgba(255, 0, 0, 0));
   transition:
-    opacity   0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
     transform 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s,
-    filter    0.9s  cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+    filter 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
 }
 
 .tungkolSa-kategorya-section,
 .tungkolSa-layunin-section {
   transform: translateY(28px);
   transition:
-    opacity   0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
     transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.1s;
 }
 
@@ -437,9 +481,7 @@
   opacity: 1;
   transform: none;
   filter:
-    drop-shadow(0 25px 20px rgba(255, 61,  61,  0.251))
-    drop-shadow(0 25px 14px rgba(172, 27,  27,  0.484))
-    drop-shadow(0 20px 10px rgba(255, 128, 128, 0.534));
+    drop-shadow(0 25px 20px rgba(255, 61, 61, 0.251)) drop-shadow(0 25px 14px rgba(172, 27, 27, 0.484)) drop-shadow(0 20px 10px rgba(255, 128, 128, 0.534));
 }
 
 /* ── Kat Track & Sticky ── */
@@ -508,7 +550,7 @@
   background: #c9a84c;
   box-shadow:
     0 16px 56px rgba(0, 0, 0, 0.45),
-    0 4px  12px rgba(0, 0, 0, 0.22);
+    0 4px 12px rgba(0, 0, 0, 0.22);
   will-change: transform, opacity;
   transform-origin: center center;
 }
@@ -527,13 +569,11 @@
 .kat-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.04)  0%,
-    transparent          28%,
-    rgba(0, 0, 0, 0.50)  70%,
-    rgba(0, 0, 0, 0.82) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.04) 0%,
+      transparent 28%,
+      rgba(0, 0, 0, 0.50) 70%,
+      rgba(0, 0, 0, 0.82) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -576,42 +616,997 @@
 
 /* ── Responsive: Cross ── */
 @media (max-width: 320px) {
-  .tungkolSa-cross { right: -2px;  top: 85%; height: clamp(82px,  22vw, 120px); }
+  .tungkolSa-cross {
+    right: -2px;
+    top: 85%;
+    height: clamp(82px, 22vw, 120px);
+  }
 }
+
 @media (min-width: 321px) and (max-width: 350px) {
-  .tungkolSa-cross { right: -25px; top: 75%; height: clamp(110px, 24vw, 135px); }
+  .tungkolSa-cross {
+    right: -25px;
+    top: 75%;
+    height: clamp(110px, 24vw, 135px);
+  }
 }
+
 @media (min-width: 351px) and (max-width: 480px) {
-  .tungkolSa-cross { right: -20px; top: 72%; height: clamp(155px, 26vw, 190px); }
+  .tungkolSa-cross {
+    right: -20px;
+    top: 72%;
+    height: clamp(155px, 26vw, 190px);
+  }
 }
+
 @media (min-width: 481px) and (max-width: 1024px) {
-  .tungkolSa-cross { right: clamp(-20px, -2vw, -8px); top: 65%; height: clamp(200px, 16vw, 220px); }
+  .tungkolSa-cross {
+    right: clamp(-20px, -2vw, -8px);
+    top: 65%;
+    height: clamp(200px, 16vw, 220px);
+  }
 }
 
 /* ── Responsive: About Logo ── */
 @media (max-width: 320px) {
-  .tungkolSa-about-logo { height: clamp(200px, 35vw, 130px); bottom: clamp(-10px, -23vw, -25px); transform: translateX(-15%); }
+  .tungkolSa-about-logo {
+    height: clamp(200px, 35vw, 130px);
+    bottom: clamp(-10px, -23vw, -25px);
+    transform: translateX(-15%);
+  }
 }
+
 @media (min-width: 321px) and (max-width: 350px) {
-  .tungkolSa-about-logo { height: clamp(200px, 38vw, 150px); bottom: clamp(-20px, -4vw, -8px);   transform: translateX(-12%); }
+  .tungkolSa-about-logo {
+    height: clamp(200px, 38vw, 150px);
+    bottom: clamp(-20px, -4vw, -8px);
+    transform: translateX(-12%);
+  }
 }
+
 @media (min-width: 351px) and (max-width: 480px) {
-  .tungkolSa-about-logo { height: clamp(220px, 43vw, 180px); bottom: clamp(-30px, -3.5vw, -10px); transform: translateX(-15%); }
+  .tungkolSa-about-logo {
+    height: clamp(220px, 43vw, 180px);
+    bottom: clamp(-30px, -3.5vw, -10px);
+    transform: translateX(-15%);
+  }
 }
+
 @media (min-width: 481px) and (max-width: 1024px) {
-  .tungkolSa-about-logo { height: clamp(230px, 28vw, 260px); bottom: clamp(-25px, -3vw, -10px);   transform: translateX(clamp(-18%, -2vw, -8%)); }
+  .tungkolSa-about-logo {
+    height: clamp(230px, 28vw, 260px);
+    bottom: clamp(-25px, -3vw, -10px);
+    transform: translateX(clamp(-18%, -2vw, -8%));
+  }
 }
 
 /* ── Responsive: Layunin ── */
 @media (max-width: 480px) {
-  .tungkolSa-layunin-heading { font-size: clamp(1.1rem, 5vw, 1.4rem); }
-  .tungkolSa-layunin-grid    { grid-template-columns: 1fr; gap: var(--space-sm); }
-  .tungkolSa-layunin-card    { aspect-ratio: 4 / 2.5; }
-  .kat-track  { height: calc((6 + 2) * 100vh); }
-  .kat-sticky { height: 100vh; }
-  .kat-scene  { width: clamp(130px, 52vw, 180px); }
+  .tungkolSa-layunin-heading {
+    font-size: clamp(1.1rem, 5vw, 1.4rem);
+  }
+
+  .tungkolSa-layunin-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+
+  .tungkolSa-layunin-card {
+    aspect-ratio: 4 / 2.5;
+  }
+
+  .kat-track {
+    height: calc((6 + 2) * 100vh);
+  }
+
+  .kat-sticky {
+    height: 100vh;
+  }
+
+  .kat-scene {
+    width: clamp(130px, 52vw, 180px);
+  }
 }
 
 @media (min-width: 481px) and (max-width: 680px) {
-  .tungkolSa-layunin-grid { grid-template-columns: repeat(2, 1fr); }
+  .tungkolSa-layunin-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+.music-container-sample {
+  position: relative;
+  z-index: 3;
+  width: clamp(260px, 72%, 480px);
+  margin: var(--space-lg) auto var(--space-md);
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1rem, 3vw, 1.75rem);
+  box-sizing: border-box;
+
+  /* Glassmorphism */
+  background: rgb(233, 232, 232);
+  backdrop-filter: blur(18px) saturate(160%);
+  /* -webkit-backdrop-filter: blur(18px) saturate(160%); */
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: clamp(16px, 3vw, 24px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(0.85rem, 2.5vw, 1.25rem);
+  text-align: center;
+}
+
+/* ── Lyrics Block ── */
+.music-lyrics-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.45rem, 1.2vw, 0.7rem);
+}
+
+.lyr-main {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.88rem, 2.4vw, 1.15rem);
+  font-weight: 700;
+  color: #0f0f0f;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.lyr-main--past {
+  opacity: 0.35;
+  font-weight: 600;
+}
+
+.lyr-main--active {
+  opacity: 1;
+}
+
+.lyr-sub {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.78rem, 1.9vw, 0.98rem);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+
+.lyr-fade {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.72rem, 1.7vw, 0.88rem);
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.38);
+  line-height: 1.6;
+}
+
+/* ── Progress Bar ── */
+.music-progress-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-progress-wrap span {
+  font-family: sans-serif;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.65);
+  min-width: 30px;
+  line-height: 1;
+}
+
+.music-progress-wrap span:last-child {
+  text-align: right;
+}
+
+.prog-bar {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+  cursor: pointer;
+}
+
+.prog-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.prog-bar::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Controls Row ── */
+.music-controls {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 3.5vw, 26px);
+}
+
+.ctrl-btn {
+  background: none;
+  border: none;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  opacity: 0.9;
+}
+
+.ctrl-btn svg {
+  display: block;
+  fill: currentColor;
+}
+
+.ctrl-btn--dim {
+  opacity: 0.42;
+}
+
+.ctrl-btn--play {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.ctrl-btn--play svg {
+  margin-left: 3px;
+}
+
+/* ── Volume Row ── */
+.vol-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.vol-wrap svg {
+  flex-shrink: 0;
+  fill: rgba(255, 255, 255, 0.55);
+}
+
+.vol-bar {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.25);
+  outline: none;
+  cursor: pointer;
+}
+
+.vol-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.vol-bar::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .music-container-sample {
+    width: 90%;
+    padding: 1.1rem 1rem;
+  }
+
+  .music-controls {
+    gap: clamp(10px, 5vw, 18px);
+  }
+
+  .ctrl-btn--play {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+
+
+.music-container-sample {
+  position: relative;
+  z-index: 3;
+  width: clamp(260px, 68%, 460px);
+  margin: var(--space-lg) auto var(--space-md);
+  padding: clamp(1.4rem, 4vw, 2.2rem) clamp(1.1rem, 3.5vw, 2rem);
+  box-sizing: border-box;
+
+  /* Glassmorphism */
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(22px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(22px) saturate(180%) brightness(1.08);
+
+  /* Border + glow */
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: clamp(18px, 3vw, 28px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  text-align: center;
+}
+
+/* subtle top-edge shimmer line */
+.music-container-sample::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.55) 40%,
+      rgba(255, 255, 255, 0.55) 60%,
+      transparent);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* ── Lyrics ── */
+.music-lyrics-sample {
+  width: 100%;
+  height: clamp(9rem, 22vw, 13rem);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.82rem, 2.2vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  color: #2c2a2a;
+  overflow: hidden;
+  text-shadow:
+    0 1px 10px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(255, 255, 255, 0.08);
+
+  /* fade bottom like Apple Music */
+  mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 55%,
+      rgba(0, 0, 0, 0.45) 80%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 55%,
+      rgba(0, 0, 0, 0.45) 80%,
+      transparent 100%);
+}
+
+/* ── Buttons Row ── */
+.audio-player-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3.5vw, 22px);
+  padding-top: clamp(0.4rem, 1.2vw, 0.75rem);
+
+  /* thin separator line above */
+  border-top: 1px solid rgba(20, 20, 20, 0.747);
+}
+
+/* all button images */
+.audio-player-buttons img {
+  display: block;
+  object-fit: contain;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+
+  width: clamp(18px, 4vw, 24px);
+  height: clamp(18px, 4vw, 24px);
+
+  opacity: 0.82;
+  filter: brightness(0) invert(0.15);
+  transition:
+    opacity 0.18s ease,
+    transform 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.18s ease;
+}
+
+/* hover state */
+.audio-player-buttons img:hover {
+  opacity: 1;
+  transform: scale(1.18);
+  filter: brightness(0) invert(1) drop-shadow(0 0 5px rgba(26, 25, 25, 0.6));
+}
+
+/* active / press state */
+.audio-player-buttons img:active {
+  transform: scale(0.92);
+  opacity: 0.7;
+}
+
+/* play button — larger + circle glass */
+.audio-player-buttons img[alt="play"] {
+  width: clamp(36px, 8vw, 46px);
+  height: clamp(36px, 8vw, 46px);
+  padding: clamp(6px, 1.5vw, 10px);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.10);
+  border: 1.5px solid rgba(0, 0, 0, 0.35);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-sizing: content-box;
+}
+
+.audio-player-buttons img[alt="play"]:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: scale(1.1);
+}
+
+/* pause button — same glass pill */
+.audio-player-buttons img[alt="pause"] {
+  width: clamp(36px, 8vw, 46px);
+  height: clamp(36px, 8vw, 46px);
+  padding: clamp(6px, 1.5vw, 10px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-sizing: content-box;
+}
+
+.audio-player-buttons img[alt="pause"]:hover {
+  background: rgba(255, 255, 255, 0.24);
+  transform: scale(1.1);
+}
+
+/* dimmer icons: list + shuffle (empty alt) */
+.audio-player-buttons img[alt="list-audio"],
+.audio-player-buttons img[alt=""] {
+  opacity: 0.42;
+}
+
+.audio-player-buttons img[alt="list-audio"]:hover,
+.audio-player-buttons img[alt=""]:hover {
+  opacity: 0.88;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .music-container-sample {
+    width: 88%;
+    padding: 1.1rem 1rem;
+    gap: 0.9rem;
+  }
+
+  .audio-player-buttons {
+    gap: clamp(8px, 4vw, 16px);
+  }
+
+  .audio-player-buttons img[alt="play"],
+  .audio-player-buttons img[alt="pause"] {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .music-container-sample {
+    width: 78%;
+  }
+}
+
+/* ________+++++_________ */
+
+/* ═══════════════════════════════════════════
+   MUSIC CONTAINER SAMPLE
+   Append to the bottom of tungkolSa.css
+   ═══════════════════════════════════════════ */
+
+.music-container-sample {
+  position: relative;
+  z-index: 3;
+  width: clamp(260px, 68%, 460px);
+  margin: var(--space-lg) auto var(--space-md);
+  padding: clamp(1.4rem, 4vw, 2.2rem) clamp(1.1rem, 3.5vw, 2rem);
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.856);
+  backdrop-filter: blur(22px) saturate(100%) brightness(0);
+  -webkit-backdrop-filter: blur(22px) saturate(180%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: clamp(18px, 3vw, 28px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 2px 8px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(1rem, 3vw, 1.5rem);
+  text-align: center;
+}
+
+.music-container-sample::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(to right,
+      transparent,
+      rgba(255, 255, 255, 0.55) 40%,
+      rgba(255, 255, 255, 0.55) 60%,
+      transparent);
+  border-radius: 1px;
+  pointer-events: none;
+}
+
+/* ── Lyrics wrapper ── */
+.music-lyrics-sample {
+  width: 100%;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(0.82rem, 2.2vw, 1.05rem);
+  font-weight: 600;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+  mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 55%,
+      rgba(0, 0, 0, 0.45) 80%,
+      transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom,
+      black 0%,
+      black 55%,
+      rgba(0, 0, 0, 0.45) 80%,
+      transparent 100%);
+}
+
+/* each lyric line — JS adds this class */
+.lyric-line {
+  display: block;
+  color: rgba(0, 0, 0, 0.55);
+  opacity: 1;
+  transition:
+    color 0.45s ease,
+    font-size 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    text-shadow 0.45s ease;
+  text-shadow: none;
+}
+
+/* active line */
+.lyric-line.lyr--active {
+  color: #818181;
+  font-size: clamp(0.9rem, 2.5vw, 1.15rem);
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.25),
+    0 1px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* past lines */
+.lyric-line.lyr--past {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+/* ── Buttons Row ── */
+.audio-player-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 3.5vw, 22px);
+  padding-top: clamp(0.4rem, 1.2vw, 0.75rem);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.audio-player-buttons img {
+  display: block;
+  object-fit: contain;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  width: clamp(18px, 4vw, 24px);
+  height: clamp(18px, 4vw, 24px);
+  opacity: 0.82;
+  filter: brightness(0);
+  transition:
+    opacity 0.18s ease,
+    transform 0.15s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.18s ease;
+}
+
+.audio-player-buttons img:hover {
+  opacity: 1;
+  transform: scale(1.18);
+  filter: brightness(0) drop-shadow(0 0 5px rgba(0, 0, 0, 0.35));
+}
+
+.audio-player-buttons img:active {
+  transform: scale(0.92);
+  opacity: 0.7;
+}
+
+/* play & pause shared pill style */
+.audio-player-buttons img[alt="play"],
+.audio-player-buttons img[alt="pause"] {
+  width: clamp(36px, 8vw, 46px);
+  height: clamp(36px, 8vw, 46px);
+  padding: clamp(6px, 1.5vw, 10px);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  box-sizing: content-box;
+}
+
+.audio-player-buttons img[alt="play"]:hover,
+.audio-player-buttons img[alt="pause"]:hover {
+  background: rgba(255, 255, 255, 0.26);
+  transform: scale(1.1);
+}
+
+/* pause hidden by default */
+.audio-player-buttons img[alt="pause"] {
+  display: none;
+}
+
+/* when .is-playing on container — swap buttons */
+.music-container-sample.is-playing img[alt="play"] {
+  display: none;
+}
+
+.music-container-sample.is-playing img[alt="pause"] {
+  display: block;
+}
+
+/* dimmer secondary icons */
+.audio-player-buttons img[alt="list-audio"],
+.audio-player-buttons img[alt=""] {
+  opacity: 0.42;
+}
+
+.audio-player-buttons img[alt="list-audio"]:hover,
+.audio-player-buttons img[alt=""]:hover {
+  opacity: 0.88;
+}
+
+/* ── Responsive ── */
+@media (max-width: 480px) {
+  .music-container-sample {
+    width: 88%;
+    padding: 1.1rem 1rem;
+    gap: 0.9rem;
+  }
+
+  .audio-player-buttons {
+    gap: clamp(8px, 4vw, 16px);
+  }
+
+  .audio-player-buttons img[alt="play"],
+  .audio-player-buttons img[alt="pause"] {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .music-container-sample {
+    width: 78%;
+  }
+}
+
+
+/* ───────── OUR TEAM SECTION ───────── */
+.our-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1300px;
+  /* wider */
+  margin: 0 auto;
+  padding: 2.5rem 1rem;
+}
+
+/* ───────── TITLE ───────── */
+.awtor {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.awtor h2 {
+  font-size: 2.2rem;
+  font-weight: bold;
+}
+
+/* ───────── CARD ───────── */
+.awtor-container {
+  position: relative;
+  width: 95%;
+  height: 420px;
+  /* bigger height */
+  margin-bottom: 2.5rem;
+  border-radius: 20px;
+  overflow: hidden;
+
+  background: #ea8c98;
+  /* light pink */
+}
+
+/* ───────── TOP PINK STRIP ───────── */
+.title-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 40%;
+
+  background: #e6526b;
+
+  display: flex;
+  align-items: center;
+  /* CENTER AGAIN (like original) */
+  justify-content: center;
+}
+
+/* ───────── BIG TEXT ───────── */
+.title-container p {
+  font-size: 14.5rem;
+  /* bigger */
+  font-weight: 900;
+  color: #ffffff;
+  opacity: 0.80;
+  letter-spacing: 5px;
+  margin: 0;
+}
+
+/* ───────── PROFILE IMAGE ───────── */
+.profile-container {
+  position: absolute;
+  bottom: 0;
+  right: 0%;
+}
+
+.profile-container img {
+  height: 350px;
+  /* bigger */
+  object-fit: contain;
+}
+
+
+
+
+/* ───────── BOOK IMAGE ───────── */
+.awtor-container>img {
+  position: absolute;
+  bottom: 65px;
+  left: 21%;
+  height: 220px;
+  /* bigger */
+  object-fit: contain;
+}
+
+/* ───────── SECOND CARD (REVERSE) ───────── */
+.awtor-container:nth-child(3) .profile-container {
+  left: 1%;
+  right: auto;
+}
+
+.awtor-container:nth-child(3)>img {
+  right: 10%;
+  left: auto;
+}
+
+
+/* ───────── RESPONSIVE ───────── */
+
+/* TABLET */
+@media (max-width: 1024px) {
+  .awtor-container {
+    height: 360px;
+  }
+
+  .title-container p {
+    font-size: 9rem;
+  }
+
+  .profile-container img {
+    height: 300px;
+  }
+
+  .awtor-container>img {
+    height: 180px;
+    left: 15%;
+  }
+}
+
+/* SMALL TABLET / LARGE PHONE */
+@media (max-width: 768px) {
+  .awtor-container {
+    height: 320px;
+  }
+
+  .title-container p {
+    font-size: 7rem;
+    letter-spacing: 3px;
+  }
+
+  .profile-container img {
+    height: 260px;
+  }
+
+  .awtor-container>img {
+    height: 150px;
+    left: 12%;
+  }
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .awtor-container {
+    height: 280px;
+  }
+
+  .title-container {
+    height: 35%;
+  }
+
+  .title-container p {
+    font-size: 5rem;
+    letter-spacing: 2px;
+  }
+
+  /* STACK FEEL (still same layout, just tighter) */
+  .profile-container img {
+    height: 200px;
+  }
+
+  .awtor-container>img {
+    height: 120px;
+    bottom: 40px;
+    left: 10%;
+  }
+
+  .awtor-container:nth-child(3)>img {
+    right: 10%;
+  }
+}
+
+/* VERY SMALL DEVICES */
+@media (max-width: 360px) {
+  .awtor-container {
+    height: 250px;
+  }
+
+  .title-container p {
+    font-size: 4rem;
+  }
+
+  .profile-container img {
+    height: 180px;
+  }
+
+  .awtor-container>img {
+    height: 100px;
+  }
+}
+
+
+/* ───────── HOVER EFFECT ───────── */
+
+/* make container hoverable */
+.awtor-hover {
+  cursor: pointer;
+}
+
+/* target BOTH texts inside title-container */
+.awtor-hover .title-container p {
+  transition: all 0.4s ease;
+}
+
+/* FIRST TEXT = "AWTOR" */
+.awtor-hover .title-container p:first-child {
+  position: absolute;
+  opacity: 1;
+}
+
+/* SECOND TEXT = NAME */
+.awtor-hover .title-container p:last-child {
+  position: absolute;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: bold;
+  opacity: 0;
+  letter-spacing: 2px;
+}
+
+/* ───────── HOVER EFFECT ───────── */
+
+/* make container hoverable */
+.awtor-hover {
+  cursor: pointer;
+}
+
+/* target BOTH texts inside title-container */
+.awtor-hover .title-container p {
+  transition: all 0.4s ease;
+}
+
+/* FIRST TEXT = "AWTOR" */
+.awtor-hover .title-container p:first-child {
+  position: absolute;
+  opacity: 1;
+}
+
+/* SECOND TEXT = NAME */
+.awtor-hover .title-container p:last-child {
+  position: absolute;
+  font-size: 1.5rem;
+  /*3rem*/
+  font-weight: bold;
+  opacity: 0;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+/* ───────── ON HOVER ───────── */
+
+/* hide AWTOR */
+.awtor-hover:hover .title-container p:first-child {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* show NAME */
+.awtor-hover:hover .title-container p:last-child {
+  opacity: 1;
+  transform: scale(3);
 }

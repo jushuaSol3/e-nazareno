@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import './tungkolSa.css';
 
 const KATEGORYA_CARDS = [
   { id: 1, src: '/kategorya1.jpg', label: 'Kasaysayan', side: 'left', },
   { id: 2, src: '/kategorya2.jpg', label: 'Prusisyon', side: 'right' },
-  { id: 3, src: '/kategorya3.jpg', label: 'Mga Deboto', side: 'left' },
+  { id: 3, src: '/kategorya.png', label: 'Mga Deboto', side: 'left' },
   { id: 4, src: '/kategorya4.jpg', label: 'Tradisyon', side: 'right' },
   { id: 5, src: '/kategorya5.jpg', label: 'Panalangin', side: 'left' },
   { id: 6, src: '/kategorya6.jpg', label: 'Pagmamahal', side: 'right' },
@@ -12,8 +12,8 @@ const KATEGORYA_CARDS = [
 
 const LAYUNIN_CARDS = [
   { src: '/layunin1.jpg', alt: 'Bawat pagluhod', label: 'Bawat pagluhod', hasImage: true },
-  { src: '', alt: '', label: 'Bawat hiling', hasImage: false },
-  { src: '', alt: '', label: 'Bawat pasasalamat', hasImage: false },
+  { src: '/bawat-hiling.png', alt: '', label: 'Bawat hiling', hasImage: true },
+  { src: '/bawat-pasasalamat.jpg', alt: '', label: 'Bawat pasasalamat', hasImage: true },
 ];
 
 const OBSERVER_OPTS = { threshold: 0.1, rootMargin: '0px 0px -20px 0px' };
@@ -22,6 +22,115 @@ const OBSERVER_OPTS = { threshold: 0.1, rootMargin: '0px 0px -20px 0px' };
 const TOTAL_BANDS = 6;
 const CARD_COUNT = KATEGORYA_CARDS.length;
 
+// ── Lyric lines with timing (seconds) ──────────────────────────────
+// Edit the text here to match your actual lyrics.
+// Adjust start/end to match your audio file timing.
+const LYRIC_LINES = [
+  { text: 'Gamit ang makabagong Audio Feature,', start: 0, end: 5 },
+  { text: 'binigyang-buhay ng platapormang ito', start: 5, end: 10 },
+  { text: 'ang tradisyong oral ng ating mga ninuno,', start: 10, end: 16 },
+  { text: 'kung saan ang boses ng pananampalataya', start: 16, end: 22 },
+  { text: 'ay direktang naririnig at nadarama,', start: 22, end: 28 },
+  { text: 'hindi lamang nababasa.', start: 28, end: 34 },
+];
+
+const TOTAL_DURATION = LYRIC_LINES[LYRIC_LINES.length - 1].end;
+
+// ── MusicPlayer component ───────────────────────────────────────────
+function MusicPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const rafRef = useRef(null);
+  const lastTSRef = useRef(null);
+
+  // RAF tick — advances currentTime while playing
+  const tick = useCallback((ts) => {
+    if (lastTSRef.current !== null) {
+      const delta = (ts - lastTSRef.current) / 1000;
+      setCurrentTime(prev => {
+        const next = prev + delta;
+        if (next >= TOTAL_DURATION) {
+          setIsPlaying(false);
+          lastTSRef.current = null;
+          return 0;
+        }
+        return next;
+      });
+    }
+    lastTSRef.current = ts;
+    rafRef.current = requestAnimationFrame(tick);
+  }, []);
+
+  useEffect(() => {
+    if (isPlaying) {
+      lastTSRef.current = null;
+      rafRef.current = requestAnimationFrame(tick);
+    } else {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      lastTSRef.current = null;
+    }
+    return () => {
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [isPlaying, tick]);
+
+  const handlePlay = () => setIsPlaying(true);
+  const handlePause = () => setIsPlaying(false);
+  const handlePrev = () => setCurrentTime(t => Math.max(0, t - 8));
+  const handleNext = () => setCurrentTime(t => Math.min(TOTAL_DURATION - 0.1, t + 8));
+
+  // Determine lyric state for each line
+  const getLyricClass = (line) => {
+    if (currentTime >= line.start && currentTime < line.end) return 'lyric-line lyr--active';
+    if (currentTime >= line.end) return 'lyric-line lyr--past';
+    return 'lyric-line';
+  };
+
+  return (
+    <div className={`music-container-sample${isPlaying ? ' is-playing' : ''}`}>
+
+      <div className="music-lyrics-sample">
+        {LYRIC_LINES.map((line, i) => (
+          <span key={i} className={getLyricClass(line)}>
+            {line.text}
+          </span>
+        ))}
+      </div>
+
+      <div className="audio-player-buttons">
+        <img src="/mlist.png" alt="list-audio" />
+        <img
+          src="/prev.png"
+          alt="prev"
+          onClick={handlePrev}
+          style={{ cursor: 'pointer' }}
+        />
+        <img
+          src="/play.png"
+          alt="play"
+          onClick={handlePlay}
+          style={{ cursor: 'pointer', display: isPlaying ? 'none' : 'block' }}
+        />
+        <img
+          src="/pause.png"
+          alt="pause"
+          onClick={handlePause}
+          style={{ cursor: 'pointer', display: isPlaying ? 'block' : 'none' }}
+        />
+        <img
+          src="/next.png"
+          alt="next"
+          onClick={handleNext}
+          style={{ cursor: 'pointer' }}
+        />
+        <img src="/shuffle.png" alt="shuffle" />
+      </div>
+
+    </div>
+  );
+}
+
+// ── KategoryaStack ──────────────────────────────────────────────────
 function KategoryaStack() {
   const trackRef = useRef(null);
   const stickyRef = useRef(null);
@@ -209,8 +318,10 @@ export default function TungkolSa() {
             </h3>
             <div className="tungkolSa-kategorya-divider" aria-hidden="true" />
 
-
             <KategoryaStack />
+
+            <MusicPlayer />
+
             <p className="tungkolSa-kategorya-body tungkolSa-kategorya-body--accent">
               binubuksan ng kagamitang ito ang pinto upang masilip ang masalimuot ngunit matatag na
               ugnayan ng mga tao sa Poong Nazareno.<br>
@@ -222,10 +333,58 @@ export default function TungkolSa() {
             </p>
           </section>
         </div>
+        <div>
+          <p>
+            Ang bawat salaysay ay maingat na hinabi bilang mga interaktibong kuwento upang mas maging malapit at madaling maunawaan ng mga mambabasa ang tibay ng pananalig na nagmumula sa barangay Dalas patungo sa buong bayan.
+          </p>
+          <p>
+            Ito rin ay nagsisilbing isang paanyaya sa mga susunod na henerasyon na balikan ang kanilang pinag-ugatan at kilalanin ang Poong Nazareno hindi lamang bilang isang imahen, kundi bilang katuwang sa bawat danas ng buhay-Laboeño.
+          </p>
+          <p>
+            Sa huli, ang E-Nazareno ay naninindigan na ang tunay na lakas ng isang debosyon ay wala sa laki ng simbahan, kundi sa lalim ng mga kuwentong ipinapasa at sa ningning ng pananampalatayang patuloy na nagbubuklod sa isang pamayanan.
 
+          </p>
+        </div>
       </section>
 
-      <section className="tungkolSa-">
+      <section className="our-team">
+
+        <div className='awtor'>
+          <h2>MGA AWTOR</h2>
+          <br />
+        </div>
+
+
+        <div className='awtor-hover awtor-container'>
+          <div className='title-container'>
+            <p className=''>
+              AWTOR
+            </p>
+            <p>
+              Kate Cortez
+            </p>
+          </div>
+          <div className='profile-container'>
+            <img src='/cortez.png' alt='Kate Cortez' />
+          </div>
+          <img src="BOOK1.png" alt="" />
+        </div>
+        {/*  separation */}
+        <div className='awtor-hover awtor-container'>
+          <div className='title-container'>
+            <p className=''>
+              AWTOR
+            </p>
+            <p>
+              Stephanie Marca
+            </p>
+
+          </div>
+          <div className='profile-container'>
+            <img src='/MARCA.png' alt='Stephanie Marca' />
+          </div>
+          <img src="/BOOK1.png" alt="" />
+        </div>
 
       </section>
     </div>

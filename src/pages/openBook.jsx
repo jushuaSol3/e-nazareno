@@ -210,6 +210,16 @@ export default function OpenBook() {
     setStoryIsPlaying(false);
   }
 
+  // Per-book image paragraph indices (from JSON, fallback to defaults)
+  const img1Para = openBook.image1Para ?? 0;
+  const img2Para = openBook.image2Para ?? Math.floor(openBook.body.length / 2);
+  const img3Para = openBook.image3Para ?? openBook.body.length - 2;
+
+  // Split body into segments around the 3 image insertion points
+  const seg1 = openBook.body.slice(0, img1Para + 1);
+  const seg2 = openBook.body.slice(img1Para + 1, img2Para + 1);
+  const seg3 = openBook.body.slice(img2Para + 1, img3Para + 1);
+  const seg4 = openBook.body.slice(img3Para + 1);
 
   return (
     <div className="ob-root">
@@ -336,34 +346,52 @@ export default function OpenBook() {
       <main className="ob-main">
         <article className="ob-story">
 
-          {/* First block: image floats right, text wraps left */}
+          {/* Block 1: image1 floats right, seg1 paragraphs wrap around it */}
           <div className="ob-block">
-            <img
-              // src="https://placehold.co/180x200/5c3220/fff?text=Image+1"
-              src={openBook.image1}
-              alt="Illustration 1"
-              className="ob-inline-img ob-inline-img--right"
-            />
-            {openBook.body.slice(0, 2).map((paragraph, index) => (
+            {openBook.image1 && (
+              <img
+                src={openBook.image1}
+                alt="Illustration 1"
+                className="ob-inline-img ob-inline-img--right"
+              />
+            )}
+            {seg1.map((paragraph, index) => (
               <p key={index} className="ob-paragraph">{highlightText(paragraph, searchQuery)}</p>
             ))}
           </div>
 
-          {/* Full-width paragraphs — ALL middle paragraphs, not just 2 */}
-          <img
-            src={openBook.image2}
-            alt="Illustration 2"
-            className="ob-inline-img ob-inline-img--left"
-          />
-          {openBook.body.slice(2, openBook.body.length - 2).map((paragraph, index) => (
-            <p key={index} className="ob-paragraph">{highlightText(paragraph, searchQuery)}</p>
-          ))}
-
-          {/* Second block: image floats left, text wraps right */}
+          {/* Block 2: seg2 paragraphs (no image) */}
           <div className="ob-block">
+            {seg2.map((paragraph, index) => (
+              <p key={index} className="ob-paragraph">{highlightText(paragraph, searchQuery)}</p>
+            ))}
+          </div>
 
-            {openBook.body.slice(-2).map((para, i) => (
-              <p key={i} className="ob-paragraph">{highlightText(para, searchQuery)}</p>
+          {/* Block 3: image2 floats left, seg3 paragraphs wrap around it */}
+          <div className="ob-block">
+            {openBook.image2 && (
+              <img
+                src={openBook.image2}
+                alt="Illustration 2"
+                className="ob-inline-img ob-inline-img--left"
+              />
+            )}
+            {seg3.map((paragraph, index) => (
+              <p key={index} className="ob-paragraph">{highlightText(paragraph, searchQuery)}</p>
+            ))}
+          </div>
+
+          {/* Block 4: image3 floats right, seg4 paragraphs wrap around it */}
+          <div className="ob-block">
+            {openBook.image3 && (
+              <img
+                src={openBook.image3}
+                alt="Illustration 3"
+                className="ob-inline-img ob-inline-img--right"
+              />
+            )}
+            {seg4.map((paragraph, index) => (
+              <p key={index} className="ob-paragraph">{highlightText(paragraph, searchQuery)}</p>
             ))}
           </div>
 

@@ -57,10 +57,11 @@
 }
 
 .ob-inline-img {
-  width: 180px;
+  width: 220px;
   height: auto;
   border-radius: 4px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  border: 5px solid #560116;
   display: block;
 }
 
@@ -329,7 +330,7 @@ mark.ob-highlight {
   }
 
   .ob-inline-img {
-    width: 120px;
+    width: 140px;
   }
 
   .ob-paragraph {
