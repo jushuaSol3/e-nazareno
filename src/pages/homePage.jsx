@@ -15,6 +15,9 @@ function shuffled(arr) {
   return a;
 }
 
+
+
+
 function Carousel() {
   const { openModal } = useBookModal();
   const [pool] = useState(() => shuffled(books).slice(0, 3));
@@ -141,6 +144,9 @@ function Carousel() {
   );
 }
 
+
+
+
 function HomePage() {
   return (
     <>
@@ -152,7 +158,7 @@ function HomePage() {
             <p>
               Kalipunan ng mga <strong>KUWENTO</strong> sa likod ng <strong>DEBOSYON</strong>
             </p>
-            <button className="hero-btn">Simulan ang Pagbabasa</button>
+            <NavLink to='./mga-kuwento' className="hero-btn">Simulan ang Pagbabasa</NavLink>
           </div>
           <div className="hero-search">
             <SearchBar />

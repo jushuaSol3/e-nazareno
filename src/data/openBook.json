@@ -5,7 +5,11 @@
         "preface": {
             "id": 1,
             "title": "Historikal",
-            "body": "May mga kuwentong hindi matatagpuan sa mga pahina ng aklat sa paaralan, kundi nakaukit sa mga kulubot ng kamay at sa lamig ng semento ng isang lumang simbahan. Sa bawat dampi ng panyo sa paa ng Poong Nazareno, tila may bumubulong na nakaraan—isang panahon kung kailan ang isang bayan ay payak na pilapil pa lamang, at ang gabi ay binabalot ng tunay na kadiliman na tanging mga gasera lang ang kayang tumalo. Dito nagsisimula ang paglalakbay ng isang pananalig na hindi agad nakahanap ng permanenteng tahanan, kundi nanatiling munting binhi na dinala ng hangin sa loob ng mga tahanan.",
+            "body": [
+                "May mga kuwentong hindi matatagpuan sa mga pahina ng aklat sa paaralan, kundi nakaukit sa mga kulubot ng kamay at sa lamig ng semento ng isang lumang simbahan. Sa bawat dampi ng panyo sa paa ng Poong Nazareno, tila may bumubulong na nakaraan—isang panahon kung kailan ang isang bayan ay payak na pilapil pa lamang, at ang gabi ay binabalot ng tunay na kadiliman na tanging mga gasera lang ang kayang tumalo. Dito nagsisimula ang paglalakbay ng isang pananalig na hindi agad nakahanap ng permanenteng tahanan, kundi nanatiling munting binhi na dinala ng hangin sa loob ng mga tahanan.",
+                "Sa gitna ng bango ng luntiang bukid at basang lupa, masisilip mo ang kuwento ng isang bata na nakahanap ng lakas sa harap ng isang munting kapilya. Ngunit ang kasaysayan ay hindi laging diretso; dumaan ito sa pagiging manlalakbay ng Poon sa loob ng iba't ibang dako ng barangay. Ang bawat paglipat ay hindi naging hadlang, kundi naging paraan upang ang debosyon ay maipunla sa bawat sulok hanggang sa maging dambuhalang prusisyong kilala na ng buong bayan.",
+                "Ang mga susunod na tagpo ay magdadala sa iyo sa ilang taon ng pagsasakripisyo, mula sa mga lamparang bitbit sa dilim patungo sa modernong ingay ng teknolohiya. Sa pag-uusap nina Lola Rosa at Mia, mauunawaan na ang tunay na kayamanan ng Labo ay hindi ang gusali ng simbahan, kundi ang pamanang moral na ipinapasa sa bawat henerasyon. Ito ay isang paanyaya na lumingon sa mga yapak na lumubog sa putik, upang makita kung paano nahanap ng isang \"ligaw na manlalakbay\" ang Kanyang permanenteng tahanan sa puso ng mga taga-Dalas."
+            ],
             "audio": "./finalizedvoice-over/AngManlalakbaySaPilapil/historical.wav"
         },
         "image1": "/ILLUSTRATION_FOR_1_FINAL.png",

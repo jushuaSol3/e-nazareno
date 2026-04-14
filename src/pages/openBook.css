@@ -18,10 +18,11 @@
   padding-top: var(--header-height);
   color: var(--ob-ink);
   font-family: 'Lora', Georgia, serif;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: top center;
   background-attachment: static;
+
 }
 
 
@@ -30,11 +31,13 @@
   position: absolute;
   inset: 0;
   background-image: url('/cover_page.png');
-  background-size: cover;
+  background-size: 100% 100%;
+  /* ← width at height stretched to fill */
+  min-height: 100%;
   background-repeat: no-repeat;
   background-position: top center;
-  opacity: 0.6;
-  z-index: -15;
+  opacity: 0.8;
+  z-index: -1;
   pointer-events: none;
 }
 
@@ -351,5 +354,47 @@ mark.ob-highlight {
   .ob-paragraph {
     font-size: 0.95rem;
     text-indent: 2em;
+  }
+}
+
+/*additional*/
+
+
+/* ── Profile name label ── */
+.title-container p:first-child {
+  font-size: clamp(3rem, 10vw, 14.5rem);
+}
+
+.title-container p:last-child {
+  font-size: clamp(3rem, 10vw, 14.5rem) !important;
+}
+
+@media (max-width: 1024px) {
+  .title-container p:last-child {
+    font-size: clamp(2.5rem, 9vw, 9rem) !important;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .title-container p:first-child,
+  .title-container p:last-child {
+    font-size: clamp(2rem, 8vw, 7rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .title-container p:first-child,
+  .title-container p:last-child {
+    font-size: clamp(1.8rem, 10vw, 5rem) !important;
+  }
+}
+
+@media (max-width: 360px) {
+
+  .title-container p:first-child,
+  .title-container p:last-child {
+    font-size: clamp(1.5rem, 9vw, 4rem) !important;
   }
 }

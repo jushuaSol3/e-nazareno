@@ -972,12 +972,12 @@
 
 /* ───────── BIG TEXT ───────── */
 .title-container p {
-  font-size: 14.5rem;
+  font-size: 100em;
   /* bigger */
   font-weight: 900;
   color: #ffffff;
   opacity: 0.80;
-  letter-spacing: 5px;
+  letter-spacing: 15px;
   margin: 0;
 }
 
@@ -987,10 +987,8 @@
   bottom: 0;
   right: 0;
   top: 0;
-  /* stretch vertically */
   display: flex;
   align-items: flex-end;
-  /* keep image grounded */
 }
 
 .profile-container img {
