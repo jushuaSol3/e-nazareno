@@ -280,3 +280,24 @@
     box-shadow: none;
   }
 }
+
+
+
+/* two rules  */
+@media (max-width: 640px) {
+  /* existing rules unchanged... */
+
+  /* When search is expanded, hide the hamburger completely */
+  .nav-search.expanded~.nav-toggle {
+    display: none;
+  }
+
+  /* Keep input always visible once expanded, even when keyboard is open */
+  .nav-search.expanded .search-bar-input {
+    width: 100% !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    font-size: 16px;
+    /* prevents iOS auto-zoom which triggers layout shift */
+  }
+}
