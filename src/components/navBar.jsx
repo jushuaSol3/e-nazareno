@@ -24,7 +24,6 @@ function NavBar() {
       setIsMobile(mobile);
       if (!mobile) {
         setIsOpen(false);
-      } else {
         setSearchOpen(false);
       }
     };
