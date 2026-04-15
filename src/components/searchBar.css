@@ -277,13 +277,3 @@
     display: none;
   }
 }
-
-@media (max-width: 768px) {
-  .wrapper {
-    z-index: 9999;
-  }
-
-  .search-bar-input {
-    font-size: 16px;
-  }
-}
