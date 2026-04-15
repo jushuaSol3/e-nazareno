@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react'; // add useRef
 import { NavLink, useLocation } from 'react-router-dom';
 import SearchBar from './searchBar';
 import './navBar.css';
@@ -8,22 +8,20 @@ function NavBar() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
   const location = useLocation();
+  const navSearchRef = useRef(null); // add ref
 
   const isHome = location.pathname === '/';
 
-  // Close menu and search bar on route change
   useEffect(() => {
     setSearchOpen(false);
     setIsOpen(false);
   }, [location.pathname]);
 
-  // Track viewport width to know which mode we're in
-  // Track viewport width to know which mode we're in
   useEffect(() => {
     let lastWidth = window.innerWidth;
     const handleResize = () => {
       const currentWidth = window.innerWidth;
-      if (currentWidth === lastWidth) return; // keyboard open only changes height, ignore
+      if (currentWidth === lastWidth) return;
       lastWidth = currentWidth;
       const mobile = currentWidth <= 640;
       setIsMobile(mobile);
@@ -36,12 +34,28 @@ function NavBar() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Close search when clicking outside the nav-search container
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (navSearchRef.current && !navSearchRef.current.contains(e.target)) {
+        setSearchOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
+
   const handleSearchToggle = () => {
     const activeEl = document.activeElement;
-    if (activeEl && activeEl.classList.contains('search-bar-input')) return; // don't close while typing
+    if (activeEl && activeEl.classList.contains('search-bar-input')) return;
     setSearchOpen(prev => !prev);
     if (isOpen) setIsOpen(false);
   };
+
   const handleNavToggle = () => {
     setIsOpen(prev => !prev);
     if (searchOpen) setSearchOpen(false);
@@ -57,8 +71,6 @@ function NavBar() {
     setSearchOpen(false);
   };
 
-  // Nav links are only hidden when search is actively expanded,
-  // on desktop only, and never on the home page
   const navLinksHidden = !isHome && searchOpen && !isMobile;
 
   return (
@@ -66,10 +78,10 @@ function NavBar() {
 
       <NavLink to="/" className="nav-logo" aria-label="Home" onClick={handleLogoClick}>
         <img src="/NAZARENO_LOGO.png" alt="Logo" className="nav-logo-img" />
-
       </NavLink>
 
       <div
+        ref={navSearchRef} // attach ref here
         className={[
           'nav-search',
           searchOpen ? 'expanded' : '',
