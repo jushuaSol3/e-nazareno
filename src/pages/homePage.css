@@ -153,14 +153,6 @@
    ─────────────────────────────────────────────────────────────────────────── */
 /* Replace both existing @media (max-width: 768px) blocks with this single one */
 @media (max-width: 768px) {
-  .hero-inner {
-    padding-bottom: clamp(1.5rem, 4vh, 3rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(0.75rem, 2vh, 1.5rem);
-  }
-
   .hero-search {
     position: relative;
     bottom: auto;
@@ -169,18 +161,7 @@
     width: 90%;
     margin: 0 auto;
     animation: fadeUp 0.9s ease 1.8s both;
-    /* Prevent layout recalculation from hiding the element when keyboard opens */
-    will-change: transform;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-
-  /* Keep the input always visible and never collapse */
-  .hero-search .search-bar-input {
-    opacity: 1 !important;
-    visibility: visible !important;
-    pointer-events: auto !important;
-    min-width: 120px;
+    z-index: 9999;
   }
 }
 

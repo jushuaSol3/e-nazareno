@@ -279,10 +279,11 @@
 }
 
 @media (max-width: 768px) {
+  .wrapper {
+    z-index: 9999;
+  }
+
   .search-bar-input {
     font-size: 16px;
-    /* Prevents iOS auto-zoom which triggers layout shift */
-    opacity: 1;
-    visibility: visible;
   }
 }
