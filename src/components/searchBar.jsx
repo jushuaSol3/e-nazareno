@@ -108,8 +108,7 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
             // an outside click and closing it prematurely
             onTouchStart={(e) => e.stopPropagation()}
 
-            onMouseDown={(e) => e.preventDefault()} // ← add this
-            onTouchStart={(e) => e.stopPropagation()} // ← and this
+
           >
             <div className="sort-setting">
               <button onClick={handleSortToggle}>
