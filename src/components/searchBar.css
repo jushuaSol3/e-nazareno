@@ -270,10 +270,3 @@
   opacity: 1;
   transform: scaleY(1);
 }
-
-/* ── Mobile ── */
-@media (max-width: 640px) {
-  .hero-search {
-    display: none;
-  }
-}
