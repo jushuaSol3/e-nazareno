@@ -145,7 +145,7 @@ function Kasaysayan() {
 
       <section className="kasaysayan-banner" aria-label="Banner">
         <figure className="kasaysayan-banner-img-wrap">
-          <img src="/nazareno_kasaysayan.png" alt="Banner ng Kasaysayan" />
+          <img src="/banner2.jpg" alt="Banner ng Kasaysayan" />
           <div className="kasaysayan-banner-overlay">
             <div className="kasaysayan-banner-text">
               <h1 className="kasaysayan-banner-title">KASAYSAYAN</h1>

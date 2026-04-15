@@ -176,6 +176,25 @@
   }
 }
 
+/* Add this to homePage.css */
+@media (max-width: 768px) {
+  .hero-search {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: 90%;
+    margin: 0 auto;
+    /* Pull it up into normal flow so keyboard doesn't push it away */
+  }
+
+  .hero-inner {
+    padding-bottom: clamp(1.5rem, 4vh, 3rem);
+    /* reduce bottom padding on mobile */
+  }
+}
+
+
 @keyframes titleSlam {
   from {
     opacity: 0;

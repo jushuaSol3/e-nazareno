@@ -42,6 +42,28 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
     setSortAscending((prev) => !prev);
   }
 
+
+
+
+  useEffect(() => {
+    function clickedOutside(event) {
+      if (searchClose.current && !searchClose.current.contains(event.target)) {
+        setOpen(false);
+        setSearch('');
+      }
+    }
+    document.addEventListener('mousedown', clickedOutside);
+    document.addEventListener('touchstart', clickedOutside); // ← add this
+    return () => {
+      document.removeEventListener('mousedown', clickedOutside);
+      document.removeEventListener('touchstart', clickedOutside); // ← and this
+    };
+  }, []);
+
+
+
+
+
   return (
     <>
       <div className="wrapper" ref={searchClose}>
@@ -85,6 +107,9 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
             // listener above from treating a tap inside the dropdown as
             // an outside click and closing it prematurely
             onTouchStart={(e) => e.stopPropagation()}
+
+            onMouseDown={(e) => e.preventDefault()} // ← add this
+            onTouchStart={(e) => e.stopPropagation()} // ← and this
           >
             <div className="sort-setting">
               <button onClick={handleSortToggle}>
