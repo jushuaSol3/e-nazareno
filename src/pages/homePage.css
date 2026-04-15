@@ -151,11 +151,10 @@
    the search bar anchored in the document so it stays visible and focusable
    regardless of keyboard state.
    ─────────────────────────────────────────────────────────────────────────── */
+/* Replace both existing @media (max-width: 768px) blocks with this single one */
 @media (max-width: 768px) {
   .hero-inner {
-    /* Reduce bottom padding since search is now in-flow, not absolute */
     padding-bottom: clamp(1.5rem, 4vh, 3rem);
-    /* Stack children vertically so search sits naturally below content */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,21 +162,32 @@
   }
 
   .hero-search {
-    /* Remove absolute positioning — let it flow inside the flex column */
     position: relative;
     bottom: auto;
     left: auto;
     transform: none;
-    /* Take up most of the mobile width */
     width: 90%;
-    /* Reset the fadeUpCentered animation (which uses translateX(-50%))
-       to a plain fade so it doesn't mis-position the element */
+    margin: 0 auto;
     animation: fadeUp 0.9s ease 1.8s both;
   }
 }
 
-/* Add this to homePage.css */
-@media (max-width: 768px) {
+.hero-search {
+  /* Remove absolute positioning — let it flow inside the flex column */
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  /* Take up most of the mobile width */
+  width: 90%;
+  /* Reset the fadeUpCentered animation (which uses translateX(-50%))
+       to a plain fade so it doesn't mis-position the element */
+  animation: fadeUp 0.9s ease 1.8s both;
+}
+
+
+
+/* @media (max-width: 768px) {
   .hero-search {
     position: relative;
     bottom: auto;
@@ -185,14 +195,14 @@
     transform: none;
     width: 90%;
     margin: 0 auto;
-    /* Pull it up into normal flow so keyboard doesn't push it away */
+    
   }
 
   .hero-inner {
     padding-bottom: clamp(1.5rem, 4vh, 3rem);
-    /* reduce bottom padding on mobile */
+   
   }
-}
+} */
 
 
 @keyframes titleSlam {

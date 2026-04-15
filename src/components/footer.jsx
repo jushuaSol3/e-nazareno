@@ -1,5 +1,5 @@
 import '../components/footer.css'
-
+import { NavLink } from 'react-router-dom'
 function Footer() {
   return (
     <footer className="footer">
@@ -13,7 +13,7 @@ function Footer() {
         </div>
 
         <div className="footer-links">
-          <a href="#featured">Featured</a>
+          <NavLink to={'/'} href="#featured">Featured</NavLink>
           <a href="#">All Books</a>
           <a href="#">About</a>
         </div>
