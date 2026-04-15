@@ -21,6 +21,7 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
     }
   });
 
+  // Keep only ONE useEffect for outside-click detection
   useEffect(() => {
     function clickedOutside(event) {
       if (searchClose.current && !searchClose.current.contains(event.target)) {
@@ -28,8 +29,6 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
         setSearch('');
       }
     }
-    // FIX: Added touchstart alongside mousedown so outside-click
-    // detection works correctly on mobile devices
     document.addEventListener('mousedown', clickedOutside);
     document.addEventListener('touchstart', clickedOutside);
     return () => {
@@ -89,6 +88,7 @@ function SearchBar({ className, expandable = false, expanded, onToggle }) {
             placeholder="Maghanap..."
             className="search-bar-input"
             value={search}
+            onFocus={() => { if (search !== '') setOpen(true); }}  // ← ADD THIS
             onChange={(ev) => {
               setSearch(ev.target.value);
               setOpen(true);
