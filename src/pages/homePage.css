@@ -1,42 +1,43 @@
 .hero {
-    position: relative;
-    z-index: 1;
-    background:
-      url('/devotees.png') no-repeat center center / cover,
-      linear-gradient(180deg, #540317, #560116, #6f5f0b);
-    width: 100%;
-    max-height: 100%;
-    padding-top: var(--header-height, 70px); /* ← was clamp(3.5rem, 7vh, 6rem) */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--default-text-color);
-    box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  background:
+    url('/devotees.png') no-repeat center center / cover,
+    linear-gradient(180deg, #540317, #560116, #6f5f0b);
+  width: 100%;
+  max-height: 100%;
+  padding-top: var(--header-height, 70px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--default-text-color);
+  box-sizing: border-box;
 }
+
 .hero-inner {
-    position: relative;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    padding: clamp(1rem, 3vh, 2.5rem) clamp(1.25rem, 5vw, 4rem)
-            clamp(5rem, 10vh, 7rem);
-    box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: clamp(1rem, 3vh, 2.5rem) clamp(1.25rem, 5vw, 4rem) clamp(5rem, 10vh, 7rem);
+  box-sizing: border-box;
 }
+
 .hero-title {
   grid-row: 1;
   width: 100%;
   font-family: 'Gideon Roman', serif;
-  font-size: clamp(2rem, 6vw + 1rem, 8rem); /* more responsive clamp */
+  font-size: clamp(2rem, 6vw + 1rem, 8rem);
   font-weight: 800;
   color: var(--default-text-color);
   text-align: center;
   line-height: 1.2;
-  padding: clamp(0.75rem, 2vh, 2rem) 0; 
+  padding: clamp(0.75rem, 2vh, 2rem) 0;
   word-break: break-word;
   z-index: 2;
-  margin: 0 auto; 
+  margin: 0 auto;
   animation: titleSlam 1s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -63,7 +64,9 @@
   overflow-wrap: break-word;
 }
 
-.hero-content p strong { font-weight: 900; }
+.hero-content p strong {
+  font-weight: 900;
+}
 
 .hero-btn {
   display: inline-block;
@@ -72,7 +75,7 @@
   font-family: 'Inknut Antiqua', serif;
   font-size: clamp(0.65rem, 1.1vw, 0.95rem);
   color: var(--default-text-color);
-  background: linear-gradient(135deg, rgba(0,0,0,0.30), rgba(255,255,255,0.20));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.30), rgba(255, 255, 255, 0.20));
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: 4px;
   cursor: pointer;
@@ -86,20 +89,25 @@
   z-index: 11;
 }
 
-.hero-btn:hover { background: #ffffff; color: #540317; }
-.hero-btn:active { transform: scale(0.98); }
+.hero-btn:hover {
+  background: #ffffff;
+  color: #540317;
+}
+
+.hero-btn:active {
+  transform: scale(0.98);
+}
 
 .hero-main-img {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  height: 85%;           
+  height: 85%;
   max-width: 100%;
   z-index: 3;
   animation: imageRise 1.8s cubic-bezier(0.22, 1, 0.36, 1) 0.3s both;
 }
-
 
 .hero-search {
   position: absolute;
@@ -108,7 +116,7 @@
   transform: translateX(-50%);
   width: min(50%, 42rem);
   padding: clamp(0.4rem, 1vh, 0.8rem) clamp(0.75rem, 2vw, 1.2rem);
-  background: linear-gradient(135deg, rgba(0,0,0,0.30), rgba(255,255,255,0.20));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.30), rgba(255, 255, 255, 0.20));
   border: 1px solid rgba(255, 255, 255, 0.4);
   border-radius: clamp(8px, 1.5vw, 15px);
   backdrop-filter: blur(4px);
@@ -135,11 +143,45 @@
 .hero-search .search-bar-input::placeholder {
   color: rgba(255, 255, 255, 0.7);
 }
+
+/* ── Mobile fix ─────────────────────────────────────────────────────────────
+   When the mobile keyboard opens, the viewport height shrinks. Any element
+   with `position: absolute; bottom: ...` can get pushed off-screen or hidden
+   underneath the keyboard. Switching to relative/in-flow positioning keeps
+   the search bar anchored in the document so it stays visible and focusable
+   regardless of keyboard state.
+   ─────────────────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero-inner {
+    /* Reduce bottom padding since search is now in-flow, not absolute */
+    padding-bottom: clamp(1.5rem, 4vh, 3rem);
+    /* Stack children vertically so search sits naturally below content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.75rem, 2vh, 1.5rem);
+  }
+
+  .hero-search {
+    /* Remove absolute positioning — let it flow inside the flex column */
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    /* Take up most of the mobile width */
+    width: 90%;
+    /* Reset the fadeUpCentered animation (which uses translateX(-50%))
+       to a plain fade so it doesn't mis-position the element */
+    animation: fadeUp 0.9s ease 1.8s both;
+  }
+}
+
 @keyframes titleSlam {
   from {
     opacity: 0;
     transform: translateY(-30px) scale(1.08);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -151,6 +193,7 @@
     opacity: 0;
     transform: translateY(24px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -162,6 +205,7 @@
     opacity: 0;
     transform: translateX(-50%) translateY(40px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
@@ -173,6 +217,7 @@
     opacity: 0;
     transform: translateX(-50%) translateY(16px);
   }
+
   to {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
