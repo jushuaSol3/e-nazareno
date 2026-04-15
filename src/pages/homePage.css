@@ -178,14 +178,6 @@
 
 /* Add this to homePage.css */
 @media (max-width: 768px) {
-  .hero-inner {
-    padding-bottom: clamp(1.5rem, 4vh, 3rem);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: clamp(0.75rem, 2vh, 1.5rem);
-  }
-
   .hero-search {
     position: relative;
     bottom: auto;
@@ -193,8 +185,12 @@
     transform: none;
     width: 90%;
     margin: 0 auto;
-    animation: fadeUp 0.9s ease 1.8s both;
-    z-index: 9999;
+    /* Pull it up into normal flow so keyboard doesn't push it away */
+  }
+
+  .hero-inner {
+    padding-bottom: clamp(1.5rem, 4vh, 3rem);
+    /* reduce bottom padding on mobile */
   }
 }
 

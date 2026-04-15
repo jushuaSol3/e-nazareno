@@ -19,20 +19,12 @@ function NavBar() {
 
   // Track viewport width to know which mode we're in
   useEffect(() => {
-
-    let lastWidth = window.innerWidth;
     const handleResize = () => {
-      const currentWidth = window.innerWidth;
-
-      if (currentWidth === lastWidth) return;
-
-
-      lastWidth = currentWidth;
-
       const mobile = window.innerWidth <= 640;
       setIsMobile(mobile);
       if (!mobile) {
         setIsOpen(false);
+      } else {
         setSearchOpen(false);
       }
     };
@@ -41,10 +33,6 @@ function NavBar() {
   }, []);
 
   const handleSearchToggle = () => {
-
-    const activeEl = document.activeElement;
-    if (activeEl && activeEl.classList.contains('search-bar-input')) return;
-
     setSearchOpen(prev => !prev);
     if (isOpen) setIsOpen(false);
   };
